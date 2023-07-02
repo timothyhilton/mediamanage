@@ -4,9 +4,7 @@ const client_id = import.meta.env.VITE_CLIENT_ID;
 const scopes = import.meta.env.VITE_YOUTUBESCOPE;
 
 function GoogleAuth() {
-  const [ user, setUser] = useState({});
   const [ tokenClient, setTokenClient ] = useState({});
-  const [videoFile, setVideoFile] = useState(null);
 
   function handleCallbackResponse(response: JSON): void{
     console.log(response)
