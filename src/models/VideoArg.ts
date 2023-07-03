@@ -1,7 +1,6 @@
-export interface Video {
+export interface VideoArg {
     title: string;
     description: string;
-    tags: string[];
     fileExtension: string;
-    file: File;
+    accessToken: string;
 }

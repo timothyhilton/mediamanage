@@ -1,36 +1,39 @@
 import { useState } from "react";
 import axios from "axios";
-import { Video } from "../models/Video";
-import { VideoRequest } from "../models/VideoRequest";
+import { VideoArg } from "../models/VideoArg";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function VideoUpload(props: any){
-    const [video, setVideo] = useState({} as Video);
+    const [videoArgs, setVideoArgs] = useState({} as VideoArg);
+    const [video, setVideo] = useState();
 
     function saveVideo(e: any): void{
         const file = e.target.files[0];
-        const vid: Video = {
+        const vid: VideoArg = {
             title: "video",
             description: "test",
-            tags: ["testtag1", "testtag2"],
             fileExtension: file.name.split('.').pop(),
-            file: file,
+            accessToken: ""
         }
         console.log(vid.fileExtension);
-        setVideo(vid);
+        setVideo(file)
+        setVideoArgs(vid);
     }
 
     function uploadVideo(): void{
         axios.get(`${apiUrl}/Can connect to API`)
             .then(response => console.log(response.data));
 
+        const formData = new FormData();
+        videoArgs.accessToken = props.accessToken;
+        formData.append("videoArgs", JSON.stringify(videoArgs));
+        formData.append("file", video!);
         
-
         if(props.accessToken != null){
-            console.log("Posting " + JSON.stringify(video));
+            console.log("Posting " + JSON.stringify(formData));
             try {
-                axios.post(apiUrl, { video: video, accessToken: props.accessToken } as VideoRequest)
+                axios.post(apiUrl, formData)
                     .then(response => console.log(response));
             } catch (exception){
                 console.log(exception);
