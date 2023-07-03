@@ -1,40 +1,47 @@
 import { useState } from "react";
 import axios from "axios";
-import { VideoArg } from "../models/VideoArg";
+import { VideoInfos } from "../models/VideoInfos";
+import { Video } from "../models/Video"
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function VideoUpload(props: any){
-    const [videoArgs, setVideoArgs] = useState({} as VideoArg);
-    const [video, setVideo] = useState();
+    var videoInfos = {} as VideoInfos;
+    var video = {} as Video;
 
     function saveVideo(e: any): void{
         const file = e.target.files[0];
-        const vid: VideoArg = {
+
+        videoInfos = {
             title: "video",
             description: "test",
             fileExtension: file.name.split('.').pop(),
-            accessToken: ""
-        }
-        console.log(vid.fileExtension);
-        setVideo(file)
-        setVideoArgs(vid);
+            accessToken: "",
+        } as VideoInfos;
+
+        video = { 
+            videoInfos: videoInfos,
+            file: file
+        } as Video
+
+        console.log(file);
     }
 
-    function uploadVideo(): void{
+    async function uploadVideo(): Promise<void>{
         axios.get(`${apiUrl}/Can connect to API`)
             .then(response => console.log(response.data));
 
-        const formData = new FormData();
-        videoArgs.accessToken = props.accessToken;
-        formData.append("videoArgs", JSON.stringify(videoArgs));
-        formData.append("file", video!);
+        video.videoInfos.accessToken = props.accessToken;
+        console.log(JSON.stringify(video.videoInfos));
+        let formData = new FormData();
+        formData.append("VideoInfos", JSON.stringify(video.videoInfos))
+        formData.append("file", video.file)
+        
         
         if(props.accessToken != null){
-            console.log("Posting " + JSON.stringify(formData));
             try {
-                axios.post(apiUrl, formData)
-                    .then(response => console.log(response));
+                const res = await axios.post(apiUrl, formData, { headers: {"Content-Type": "multipart/form-data"}});
+                console.log(res);
             } catch (exception){
                 console.log(exception);
             }

@@ -1,4 +1,4 @@
-export interface VideoArg {
+export interface VideoInfos {
     title: string;
     description: string;
     fileExtension: string;
