@@ -1,6 +1,7 @@
 export interface Video {
-    name: string;
+    title: string;
     description: string;
     tags: string[];
-    file: Blob;
+    fileExtension: string;
+    file: File;
 }

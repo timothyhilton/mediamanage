@@ -4,7 +4,7 @@ import './App.css'
 import { useState } from 'react';
 
 function App() {
-  let [accessToken, setAccessToken] = useState();
+  let [accessToken, setAccessToken] = useState(null);
   
   return (
     <>
