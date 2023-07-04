@@ -37,7 +37,6 @@ function VideoUpload(props: any){
         formData.append("VideoInfos", JSON.stringify(video.videoInfos))
         formData.append("file", video.file)
         
-        
         if(props.accessToken != null){
             try {
                 const res = await axios.post(apiUrl, formData, { headers: {"Content-Type": "multipart/form-data"}});

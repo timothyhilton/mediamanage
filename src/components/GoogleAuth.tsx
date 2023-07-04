@@ -27,7 +27,7 @@ function GoogleAuth(props: any) {
         client_id: client_id,
         scope: scopes,
         callback: (tokenResponse: any) => {
-          console.log("Got Access Token: " + JSON.stringify(tokenResponse.access_token));
+          console.log(tokenResponse);
           props.setAccessToken(tokenResponse.access_token);
         }
       })
