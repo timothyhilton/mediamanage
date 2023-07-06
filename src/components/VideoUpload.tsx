@@ -1,11 +1,13 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
 import { VideoInfos } from "../models/VideoInfos";
 import { Video } from "../models/Video"
+import "../css/VideoUpload.css"
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function VideoUpload(props: any){
+    const [title, setTitle] = useState("");
     var videoInfos = {} as VideoInfos;
     var video = {} as Video;
 
@@ -13,7 +15,7 @@ function VideoUpload(props: any){
         const file = e.target.files[0];
 
         videoInfos = {
-            title: "video",
+            title: title,
             description: "test",
             fileExtension: file.name.split('.').pop(),
             authCode: "",
@@ -51,9 +53,17 @@ function VideoUpload(props: any){
     }
 
     return (
-        <div>
-            <input type="file" onChange={saveVideo} />
-            <input type="button" value="upload" onClick={uploadVideo} />
+        <div className="videoUploadDiv">
+            <div className="videoFormItem">
+                <p className="inputLabel">Title</p>
+                <input type="text" onChange={(e) => setTitle(e.target.value)}/>
+            </div>
+            <div className="videoFormItem">
+                <p className="inputLabel">Description</p>
+                <input type="text" />
+            </div>
+            <input className="videoFormItem" type="file" onChange={saveVideo} />
+            <input className="videoFormItem" type="button" value="upload" onClick={uploadVideo} />
         </div>
     )
 }

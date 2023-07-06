@@ -8,8 +8,11 @@ function App() {
   
   return (
     <>
-      <GoogleAuth setAuthCode={setAuthCode}/>
-      <VideoUpload authCode={authCode}/>
+      <div className="platformContainer">
+        <h3>Youtube</h3>
+        <GoogleAuth setAuthCode={setAuthCode}/>
+        <VideoUpload authCode={authCode}/>
+      </div>
     </>
   )
 }
