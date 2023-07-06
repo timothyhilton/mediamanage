@@ -1,44 +1,63 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 const client_id = import.meta.env.VITE_CLIENT_ID;
-const scopes = import.meta.env.VITE_YOUTUBESCOPE;
+const scope = import.meta.env.VITE_YOUTUBESCOPE;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function GoogleAuth(props: any) {
-  const [ tokenClient, setTokenClient ] = useState({});
+    const [client, setClient] = useState({});
 
-  function handleCallbackResponse(response: JSON): void{
-    console.log(response)
-  }
+    // TODO: make the GSI library references more readable
+    // taken from https://developers.google.com/identity/oauth2/web/guides/migration-to-gis#authorization_code_flow_examples
 
-  function initGoogleAuth(): void{
-    tokenClient.requestAccessToken(); 
-  }
+    useEffect(() => {
+        google.accounts.id.initialize({
+            client_id: client_id,
+            callback: null
+        });
 
-  useEffect(() => {
-    /* TODO: make this.... better? */
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: client_id,
-      callback: handleCallbackResponse
-    });
+        setClient(
+            google.accounts.oauth2.initCodeClient({
+                client_id: client_id,
+                scope: scope,
+                ux_mode: "popup",
+                callback: (response: any) => {
+                    /*var code_receiver_uri = apiUrl,
+                        // Send auth code to your backend platform
+                        xhr = new XMLHttpRequest();
+                    xhr.open("POST", code_receiver_uri, true);
+                    xhr.setRequestHeader(
+                        "Content-Type",
+                        "application/x-www-form-urlencoded"
+                    );
+                    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                    xhr.onload = function () {
+                        console.log("Signed in as: " + xhr.responseText);
+                    };
+                    xhr.send("code=" + response.code);*/
 
-    setTokenClient(
-      google.accounts.oauth2.initTokenClient({
-        client_id: client_id,
-        scope: scopes,
-        callback: (tokenResponse: any) => {
-          console.log(tokenResponse);
-          props.setAccessToken(tokenResponse.access_token);
-        }
-      })
-    );
-  }, []);
+                    console.log(response.code);
 
-  return (
-    <div>
-      <button id="uploadVideo" onClick={initGoogleAuth}>authorize app</button>
-    </div>
-  )
+                    // After receipt, the code is exchanged for an access token and
+                    // refresh token, and the platform then updates this web app
+                    // running in user's browser with the requested calendar info.
+                }
+            })
+        );
+    }, []);
+
+    function getAuthCode() {
+        // Request authorization code and obtain user consent
+        client.requestCode();
+    }
+
+    return (
+        <div>
+            <div id="googleSigninDiv"></div>
+            <button id="uploadVideo" onClick={getAuthCode}>authorize app</button>
+        </div>
+    )
 }
 
 export default GoogleAuth;
