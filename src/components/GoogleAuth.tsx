@@ -8,13 +8,11 @@ const apiUrl = import.meta.env.VITE_API_URL;
 function GoogleAuth(props: any) {
     const [client, setClient] = useState({});
 
-    // TODO: make the GSI library references more readable
     // taken from https://developers.google.com/identity/oauth2/web/guides/migration-to-gis#authorization_code_flow_examples
 
     useEffect(() => {
         google.accounts.id.initialize({
             client_id: client_id,
-            callback: null
         });
 
         setClient(
@@ -37,7 +35,8 @@ function GoogleAuth(props: any) {
                     };
                     xhr.send("code=" + response.code);*/
 
-                    console.log(response.code);
+                    console.log(response);
+                    props.setAuthCode(response.code);
 
                     // After receipt, the code is exchanged for an access token and
                     // refresh token, and the platform then updates this web app
