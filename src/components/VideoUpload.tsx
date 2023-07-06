@@ -16,7 +16,7 @@ function VideoUpload(props: any){
             title: "video",
             description: "test",
             fileExtension: file.name.split('.').pop(),
-            accessToken: "",
+            authCode: "",
         } as VideoInfos;
 
         video = { 
@@ -31,13 +31,13 @@ function VideoUpload(props: any){
         axios.get(`${apiUrl}/Can connect to API`)
             .then(response => console.log(response.data));
 
-        video.videoInfos.accessToken = props.accessToken;
+        video.videoInfos.authCode = props.authCode;
         console.log(JSON.stringify(video.videoInfos));
         let formData = new FormData();
         formData.append("VideoInfos", JSON.stringify(video.videoInfos))
         formData.append("file", video.file)
         
-        if(props.accessToken != null){
+        if(props.authCode != null){
             try {
                 const res = await axios.post(apiUrl, formData, { headers: {"Content-Type": "multipart/form-data"}});
                 console.log(res);
@@ -45,8 +45,8 @@ function VideoUpload(props: any){
                 console.log(exception);
             }
         } else {
-            console.log("Not posting, no access token")
-            console.log(props.accessToken);
+            console.log("Not posting, no auth code")
+            console.log(props.authCode);
         }
     }
 

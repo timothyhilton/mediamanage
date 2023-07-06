@@ -4,12 +4,12 @@ import './App.css'
 import { useState } from 'react';
 
 function App() {
-  let [accessToken, setAccessToken] = useState(null);
+  let [authCode, setAuthCode] = useState();
   
   return (
     <>
-      <GoogleAuth setAccessToken={setAccessToken}/>
-      <VideoUpload accessToken={accessToken}/>
+      <GoogleAuth setAuthCode={setAuthCode}/>
+      <VideoUpload authCode={authCode}/>
     </>
   )
 }
