@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../css/GoogleAuth.css"
 
 const client_id = import.meta.env.VITE_CLIENT_ID;
 const scope = import.meta.env.VITE_YOUTUBESCOPE;
