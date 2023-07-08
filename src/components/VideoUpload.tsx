@@ -22,11 +22,15 @@ function VideoUpload(){
     }
 
     function handleFormSubmit(){
-        GoogleAuth.getAuthCode();
-        alert(JSON.stringify(video));
+        googleAuth.runWithAuth(postVideo);
     }
 
-    async function uploadVideo(): Promise<void>{
+    function postVideo(authCode: string){
+        video.authCode = authCode;
+        console.log(video);
+    }
+
+    /* async function uploadVideo(): Promise<void>{
         axios.get(`${apiUrl}/Can connect to API`)
             .then(response => console.log(response.data));
 
@@ -47,7 +51,7 @@ function VideoUpload(){
             console.log("Not posting, no auth code")
             console.log(authCode);
         }
-    }
+    } */
 
     return (
         <div className="w-full max-w-xs">
@@ -88,7 +92,7 @@ function VideoUpload(){
                         onClick={() => document.getElementById('video')!.click()} 
                         type="button"
                     >
-                        Upload video
+                        Upload file
                     </button>
                 </div>
                 <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleFormSubmit}>
