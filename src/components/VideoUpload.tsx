@@ -1,33 +1,29 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { VideoInfos } from "../models/VideoInfos";
 import { Video } from "../models/Video"
-import GoogleAuth from "./GoogleAuth";
+import GoogleAuth from "../services/GoogleAuth";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function VideoUpload(){
-    const [authCode, setAuthCode] = useState("");
-    const [title, setTitle] = useState("");
-    var videoInfos = {} as VideoInfos;
-    var video = {} as Video;
+    const [video, setVideo] = useState({
+            title: '',
+            description: '',
+            fileExtension: '',
+            authCode: '',
+            file: new File([""], "")
+    } as Video )
 
-    function saveVideo(e: any): void{
-        const file = e.target.files[0];
+    const googleAuth = new GoogleAuth();
 
-        videoInfos = {
-            title: title,
-            description: "test",
-            fileExtension: file.name.split('.').pop(),
-            authCode: "",
-        } as VideoInfos;
+    function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setVideo(video => ({...video, [event.target.id]: event.target.value}));
+        console.log(video);
+    }
 
-        video = { 
-            videoInfos: videoInfos,
-            file: file
-        } as Video
-
-        console.log(file);
+    function handleFormSubmit(){
+        GoogleAuth.getAuthCode();
+        alert(JSON.stringify(video));
     }
 
     async function uploadVideo(): Promise<void>{
@@ -55,7 +51,7 @@ function VideoUpload(){
 
     return (
         <div className="w-full max-w-xs">
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={() => handleFormSubmit}>
                 <h2 className="block text-gray-900 text-lg text-center font-semibold mb-3">
                     Youtube Video Upload
                 </h2>
@@ -63,24 +59,39 @@ function VideoUpload(){
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                         Video title
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="title" />
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                        id="title" 
+                        type="text" 
+                        placeholder="title"
+                        value={video.title}
+                        onChange={handleFormChange}
+                    />
                 </div>
                 <div className="mb-1">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                         Video description
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="description" />
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        id="description" 
+                        type="text" 
+                        placeholder="description" 
+                        value={video.description}
+                        onChange={handleFormChange}
+                    />
                 </div>
                 <div className="mb-6">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                         Upload file
                     </label>
                     <input type="file" id="video" className="hidden" />
-                    <button className="w-full bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={() => document.getElementById('video').click()} type="button">
+                    <button className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                        onClick={() => document.getElementById('video')!.click()} 
+                        type="button"
+                    >
                         Upload video
                     </button>
                 </div>
-                <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleFormSubmit}>
                     Post Video
                 </button>
             </form>

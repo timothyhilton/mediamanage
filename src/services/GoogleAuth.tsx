@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 
 const client_id = import.meta.env.VITE_CLIENT_ID;
 const scope = import.meta.env.VITE_YOUTUBESCOPE;
-const apiUrl = import.meta.env.VITE_API_URL;
 
-function GoogleAuth(props: any) {
-    const [client, setClient] = useState({});
+class GoogleAuth {
+    const [client, setClient] = useState(new google);
+    const [authCode, setAuthCode] = useState("");
 
     // taken from https://developers.google.com/identity/oauth2/web/guides/migration-to-gis#authorization_code_flow_examples
-
+    
     useEffect(() => {
         google.accounts.id.initialize({
             client_id: client_id,
@@ -35,7 +35,7 @@ function GoogleAuth(props: any) {
                     xhr.send("code=" + response.code);*/
 
                     console.log(response);
-                    props.setAuthCode(response.code);
+                    setAuthCode(response.code);
 
                     // After receipt, the code is exchanged for an access token and
                     // refresh token, and the platform then updates this web app
@@ -48,14 +48,8 @@ function GoogleAuth(props: any) {
     function getAuthCode() {
         // Request authorization code and obtain user consent
         client.requestCode();
+        return authCode;
     }
-
-    return (
-        <div>
-            <div id="googleSigninDiv"></div>
-            <button id="uploadVideo" onClick={getAuthCode}>authorize app</button>
-        </div>
-    )
 }
 
 export default GoogleAuth;

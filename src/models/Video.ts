@@ -1,6 +1,7 @@
-import { VideoInfos } from "./VideoInfos";
-
 export interface Video {
-    videoInfos: VideoInfos;
+    title: string;
+    description: string;
+    fileExtension: string;
+    authCode: string;
     file: File;
 }
