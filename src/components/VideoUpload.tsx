@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Video } from "../models/Video"
 import GoogleAuth from "../services/GoogleAuth";
+import { serialize } from 'object-to-formdata';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -9,7 +10,7 @@ function VideoUpload(){
     const [video, setVideo] = useState({
             title: '',
             description: '',
-            fileExtension: '',
+            fileExtension: 'mp4',
             authCode: '',
             file: new File([""], "")
     } as Video )
@@ -17,7 +18,12 @@ function VideoUpload(){
     const googleAuth = new GoogleAuth();
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setVideo(video => ({...video, [event.target.id]: event.target.value}));
+        if(event.target.type == "file") {
+            setVideo(video => ({...video, [event.target.id]: event.target.files![0]}));
+        } 
+        else {
+            setVideo(video => ({...video, [event.target.id]: event.target.value}));
+        }
         console.log(video);
     }
 
@@ -25,33 +31,30 @@ function VideoUpload(){
         googleAuth.runWithAuth(postVideo);
     }
 
-    function postVideo(authCode: string){
+    async function postVideo(authCode: string){
         video.authCode = authCode;
-        console.log(video);
-    }
 
-    /* async function uploadVideo(): Promise<void>{
-        axios.get(`${apiUrl}/Can connect to API`)
-            .then(response => console.log(response.data));
+        const formData = new FormData();
+        formData.append("title", video.title);
+        formData.append("description", video.description);
+        formData.append("fileExtension", video.fileExtension);
+        formData.append("authCode", video.authCode);
+        formData.append("file", video.file);
 
-        video.videoInfos.authCode = authCode;
-        console.log(JSON.stringify(video.videoInfos));
-        let formData = new FormData();
-        formData.append("VideoInfos", JSON.stringify(video.videoInfos))
-        formData.append("file", video.file)
-        
         if(authCode != ""){
             try {
-                const res = await axios.post(apiUrl, formData, { headers: {"Content-Type": "multipart/form-data"}});
-                console.log(res);
-            } catch (exception){
+                axios.post(apiUrl, formData, { headers: {"Content-Type": "multipart/form-data"}})
+                    .then(res => console.log(res));
+            } 
+            catch (exception){
                 console.log(exception);
             }
-        } else {
+        } 
+        else {
             console.log("Not posting, no auth code")
             console.log(authCode);
         }
-    } */
+    }
 
     return (
         <div className="w-full max-w-xs">
@@ -87,9 +90,14 @@ function VideoUpload(){
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                         Upload file
                     </label>
-                    <input type="file" id="video" className="hidden" />
+                    <input 
+                        type="file" 
+                        id="file" 
+                        className="hidden"
+                        onChange={handleFormChange}
+                    />
                     <button className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
-                        onClick={() => document.getElementById('video')!.click()} 
+                        onClick={() => document.getElementById('file')!.click()} 
                         type="button"
                     >
                         Upload file
