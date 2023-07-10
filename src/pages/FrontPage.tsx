@@ -1,3 +1,6 @@
+import FAQ from "../components/FrontPage/FAQ"
+import Feature from "../components/FrontPage/Feature"
+
 function FrontPage() {
   
     return (
@@ -55,92 +58,36 @@ function FrontPage() {
                     </div>
 
                     <div className="z-10 grid gap-5 md:grid-cols-6 lg:grid-cols-9">
-                        <div className="col-span-3 font-sans text-gray-700 bg-gray-50 rounded-3xl" data-rounded="rounded-3xl" data-rounded-max="rounded-full">
-                            <div className="box-border flex flex-col items-start h-full px-2 py-8 mx-4 leading-6 text-center border-solid sm:flex-row sm:items-start sm:text-left">
-                                <div className="flex-shrink-0 p-3 font-sans text-gray-700 border border-gray-200 rounded-full" data-rounded="rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7" fill-current viewBox="0 0 2476 2476"><path d="M825.4 1238c0-227.9 184.7-412.7 412.6-412.7 227.9 0 412.7 184.8 412.7 412.7 0 227.9-184.8 412.7-412.7 412.7-227.9 0-412.6-184.8-412.6-412.7m-223.1 0c0 351.1 284.6 635.7 635.7 635.7s635.7-284.6 635.7-635.7-284.6-635.7-635.7-635.7S602.3 886.9 602.3 1238m1148-660.9c0 82 66.5 148.6 148.6 148.6 82 0 148.6-66.6 148.6-148.6s-66.5-148.5-148.6-148.5-148.6 66.5-148.6 148.5M737.8 2245.7c-120.7-5.5-186.3-25.6-229.9-42.6-57.8-22.5-99-49.3-142.4-92.6-43.3-43.3-70.2-84.5-92.6-142.3-17-43.6-37.1-109.2-42.6-229.9-6-130.5-7.2-169.7-7.2-500.3s1.3-369.7 7.2-500.3c5.5-120.7 25.7-186.2 42.6-229.9 22.5-57.8 49.3-99 92.6-142.4 43.3-43.3 84.5-70.2 142.4-92.6 43.6-17 109.2-37.1 229.9-42.6 130.5-6 169.7-7.2 500.2-7.2 330.6 0 369.7 1.3 500.3 7.2 120.7 5.5 186.2 25.7 229.9 42.6 57.8 22.4 99 49.3 142.4 92.6 43.3 43.3 70.1 84.6 92.6 142.4 17 43.6 37.1 109.2 42.6 229.9 6 130.6 7.2 169.7 7.2 500.3 0 330.5-1.2 369.7-7.2 500.3-5.5 120.7-25.7 186.3-42.6 229.9-22.5 57.8-49.3 99-92.6 142.3-43.3 43.3-84.6 70.1-142.4 92.6-43.6 17-109.2 37.1-229.9 42.6-130.5 6-169.7 7.2-500.3 7.2-330.5 0-369.7-1.2-500.2-7.2M727.6 7.5c-131.8 6-221.8 26.9-300.5 57.5-81.4 31.6-150.4 74-219.3 142.8C139 276.6 96.6 345.6 65 427.1 34.4 505.8 13.5 595.8 7.5 727.6 1.4 859.6 0 901.8 0 1238s1.4 378.4 7.5 510.4c6 131.8 26.9 221.8 57.5 300.5 31.6 81.4 73.9 150.5 142.8 219.3 68.8 68.8 137.8 111.1 219.3 142.8 78.8 30.6 168.7 51.5 300.5 57.5 132.1 6 174.2 7.5 510.4 7.5 336.3 0 378.4-1.4 510.4-7.5 131.8-6 221.8-26.9 300.5-57.5 81.4-31.7 150.4-74 219.3-142.8 68.8-68.8 111.1-137.9 142.8-219.3 30.6-78.7 51.6-168.7 57.5-300.5 6-132.1 7.4-174.2 7.4-510.4s-1.4-378.4-7.4-510.4c-6-131.8-26.9-221.8-57.5-300.5-31.7-81.4-74-150.4-142.8-219.3C2199.4 139 2130.3 96.6 2049 65c-78.8-30.6-168.8-51.6-300.5-57.5-132-6-174.2-7.5-510.4-7.5-336.3 0-378.4 1.4-510.5 7.5"/></svg>
-                                </div>
-                                <div className="mt-4 font-sans text-left text-gray-700 border-0 border-gray-200 sm:mt-2 sm:ml-4">
-                                    <h6 className="box-border text-2xl font-bold leading-none tracking-wide text-left border-solid">Instagram integration</h6>
-                                    <p className="box-border mx-0 mt-1 mb-0 font-medium leading-loose text-gray-400 border-solid sm:mt-4">
-                                        Full compatiblity with all of Instagram: Reels, posts, comments and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-span-3 font-sans text-gray-700 bg-gray-50 rounded-3xl" data-rounded="rounded-3xl" data-rounded-max="rounded-full">
-                            <div className="box-border flex flex-col items-start h-full px-2 py-8 mx-4 leading-6 text-center border-solid sm:flex-row sm:items-start sm:text-left">
-                                <div className="flex-shrink-0 p-3 font-sans text-gray-700 border border-gray-200 rounded-full" data-rounded="rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7" viewBox="5.368 5.414 53.9 53.9"><path fill="#FFF" d="M41.272 31.81c-4.942-2.641-9.674-5.069-14.511-7.604v15.165c5.09-2.767 10.455-5.301 14.532-7.561h-.021z"/><path fill="#E8E0E0" d="M41.272 31.81c-4.942-2.641-14.511-7.604-14.511-7.604l12.758 8.575c.001 0-2.324 1.289 1.753-.971z"/><path d="M27.691 51.242c-10.265-.189-13.771-.359-15.926-.803-1.458-.295-2.725-.95-3.654-1.9-.718-.719-1.289-1.816-1.732-3.338-.38-1.268-.528-2.323-.739-4.9-.323-5.816-.4-10.571 0-15.884.33-2.934.49-6.417 2.682-8.449 1.035-.951 2.239-1.563 3.591-1.816 2.112-.401 11.11-.718 20.425-.718 9.294 0 18.312.317 20.426.718 1.689.317 3.273 1.267 4.203 2.492 2 3.146 2.035 7.058 2.238 10.118.084 1.458.084 9.737 0 11.195-.316 4.836-.57 6.547-1.288 8.321-.444 1.12-.823 1.711-1.479 2.366a7.085 7.085 0 0 1-3.76 1.922c-8.883.668-16.426.813-24.987.676zM41.294 31.81c-4.942-2.641-9.674-5.09-14.511-7.625v15.166c5.09-2.767 10.456-5.302 14.532-7.562l-.021.021z"/></svg>
-
-                                </div>
-                                <div className="mt-4 font-sans text-left text-gray-700 border-0 border-gray-200 sm:mt-2 sm:ml-4">
-                                    <h6 className="box-border text-2xl font-bold leading-none tracking-wide text-left border-solid">Youtube integration</h6>
-                                    <p className="box-border mx-0 mt-1 mb-0 font-medium leading-loose text-gray-400 border-solid sm:mt-4">
-                                        Full Youtube compatiblity with all features such as community posts, videos, shorts and comments.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-span-3 font-sans text-gray-700 bg-gray-50 rounded-3xl" data-rounded="rounded-3xl" data-rounded-max="rounded-full">
-                            <div className="box-border flex flex-col items-start h-full px-2 py-8 mx-4 leading-6 text-center border-solid sm:flex-row sm:items-start sm:text-left">
-                                <div className="flex-shrink-0 p-3 font-sans text-gray-700 border border-gray-200 rounded-full" data-rounded="rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7 opacity-100 stroke-none stroke-1 [stroke-dasharray:none] [stroke-linecap:butt] [stroke-dashoffset:0] [stroke-linejoin:miter] [stroke-miterlimit:4] [fill:#000] [fill-rule:nonzero] stroke-0 [fill-rule:evenodd]" viewBox="0 0 500 500"><path d="M0 6.643C0 2.974 3 0 6.699 0c3.7 0 6.699 2.974 6.699 6.643 0 3.669-3 6.643-6.699 6.643-3.7 0-6.699-2.974-6.699-6.643z" transform="matrix(1.98 0 0 1.98 295.454 417.633)" vector-effect="non-scaling-stroke"/><path d="M161.167 81.186c10.944 7.819 24.352 12.42 38.832 12.42V65.755a39.26 39.26 0 0 1-8.155-.853v21.923c-14.479 0-27.885-4.601-38.832-12.42v56.835c0 28.432-23.06 51.479-51.505 51.479-10.613 0-20.478-3.207-28.673-8.707C82.187 183.57 95.23 189.5 109.66 189.5c28.447 0 51.508-23.047 51.508-51.48V81.186zm10.06-28.098c-5.593-6.107-9.265-14-10.06-22.726V26.78h-7.728c1.945 11.09 8.58 20.565 17.788 26.308zm-80.402 99.107a23.445 23.445 0 0 1-4.806-14.256c0-13.004 10.548-23.547 23.561-23.547a23.6 23.6 0 0 1 7.147 1.103V87.022a51.97 51.97 0 0 0-8.152-.469v22.162a23.619 23.619 0 0 0-7.15-1.103c-13.013 0-23.56 10.543-23.56 23.548 0 9.195 5.272 17.157 12.96 21.035z" transform="matrix(2.84 0 0 2.84 -105.003 -47.468)" vector-effect="non-scaling-stroke"/><path d="M153.012 74.405c10.947 7.819 24.353 12.42 38.832 12.42V64.902c-8.082-1.72-15.237-5.942-20.617-11.814-9.208-5.743-15.843-15.218-17.788-26.308H133.14v111.239c-.046 12.968-10.576 23.468-23.561 23.468-7.652 0-14.45-3.645-18.755-9.292-7.688-3.878-12.96-11.84-12.96-21.035 0-13.005 10.547-23.548 23.56-23.548 2.493 0 4.896.388 7.15 1.103V86.553c-27.945.577-50.42 23.399-50.42 51.467 0 14.011 5.597 26.713 14.68 35.993 8.195 5.5 18.06 8.707 28.673 8.707 28.445 0 51.505-23.048 51.505-51.479z" transform="matrix(2.84 0 0 2.84 -105.02 -47.48)" vector-effect="non-scaling-stroke"/><path d="M191.844 64.902v-5.928a38.84 38.84 0 0 1-20.617-5.887 38.948 38.948 0 0 0 20.617 11.815zM153.439 26.78a39.524 39.524 0 0 1-.427-3.198V20h-28.028v111.24c-.045 12.967-10.574 23.467-23.56 23.467-3.813 0-7.412-.904-10.6-2.512 4.305 5.647 11.103 9.292 18.755 9.292 12.984 0 23.515-10.5 23.561-23.468V26.78zm-44.864 59.773v-6.311a51.97 51.97 0 0 0-7.067-.479C73.06 79.763 50 102.811 50 131.24c0 17.824 9.063 33.532 22.835 42.772-9.083-9.28-14.68-21.982-14.68-35.993 0-28.067 22.474-50.889 50.42-51.466z" transform="matrix(2.84 0 0 2.84 -105.023 -47.508)" vector-effect="non-scaling-stroke"/></svg>
-                                </div>
-                                <div className="mt-4 font-sans text-left text-gray-700 border-0 border-gray-200 sm:mt-2 sm:ml-4">
-                                    <h6 className="box-border text-2xl font-bold leading-none tracking-wide text-left border-solid">TikTok integration</h6>
-                                    <p className="box-border mx-0 mt-1 mb-0 font-medium leading-loose text-gray-400 border-solid sm:mt-4">
-                                        Complete compatiblity with all TikTok features. You get the jist.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-span-3 font-sans text-gray-700 bg-gray-50 rounded-3xl" data-rounded="rounded-3xl" data-rounded-max="rounded-full">
-                            <div className="box-border flex flex-col items-start h-full px-2 py-8 mx-4 leading-6 text-center border-solid sm:flex-row sm:items-start sm:text-left">
-                                <div className="flex-shrink-0 p-3 font-sans text-gray-700 border border-gray-200 rounded-full" data-rounded="rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7 opacity-100 stroke=none stroke-1 [stroke-dasharray:none] [stroke-linecap:butt] [stroke-dashoffset:0] [stroke-linejoin:miter] [stroke-miterlimit:4] [fill:#000] [fill-rule:nonzero]" viewBox="0 0 500 500"><path d="M505.17 227.5v-72.332C504.002 68.832 435.17-.002 350-.002c-85.17 0-154 68.832-154 154v72.332c-21 0-37.332 16.332-37.332 37.332v257.83c0 21 16.332 37.332 37.332 37.332h309.17c21 0 37.332-16.332 37.332-37.332v-256.66c-1.168-21-17.5-37.332-37.332-37.332zM385 462h-70l10.5-64.168c-9.332-7-15.168-18.668-15.168-31.5 0-22.168 18.668-40.832 40.832-40.832s40.832 18.668 40.832 40.832c0 12.832-5.832 24.5-15.168 31.5zm70-234.5H245v-72.332c0-57.168 46.668-105 105-105 57.168 0 105 46.668 105 105z" transform="matrix(.82 0 0 .82 -37.004 20.314)" vector-effect="non-scaling-stroke"/></svg>
-                                </div>
-                                <div className="mt-4 font-sans text-left text-gray-700 border-0 border-gray-200 sm:mt-2 sm:ml-4">
-                                    <h6 className="box-border text-2xl font-bold leading-none tracking-wide text-left border-solid">Secure</h6>
-                                    <p className="box-border mx-0 mt-1 mb-0 font-medium leading-loose text-gray-400 border-solid sm:mt-4">
-                                        Through the use of API's we do not require the password to any of your accounts.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-span-3 font-sans text-gray-700 bg-gray-50 rounded-3xl" data-rounded="rounded-3xl" data-rounded-max="rounded-full">
-                            <div className="box-border flex flex-col items-start h-full px-2 py-8 mx-4 leading-6 text-center border-solid sm:flex-row sm:items-start sm:text-left">
-                                <div className="flex-shrink-0 p-3 font-sans text-gray-700 border border-gray-200 rounded-full" data-rounded="rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-700 align-middle stroke-current w-7 h-7" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M0 0h24v24H0z" stroke="none" />
-                                        <path d="M13 3v7h6l-8 11v-7H5l8-11" /></svg>
-                                </div>
-                                <div className="mt-4 font-sans text-left text-gray-700 border-0 border-gray-200 sm:mt-2 sm:ml-4">
-                                    <h6 className="box-border text-2xl font-bold leading-none tracking-wide text-left border-solid">Fast</h6>
-                                    <p className="box-border mx-0 mt-1 mb-0 font-medium leading-loose text-gray-400 border-solid sm:mt-4">
-                                        Saves you tons of time so you can get back to doing what you love.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-span-3 font-sans text-gray-700 border-0 bg-gray-50 rounded-3xl" data-rounded="rounded-3xl" data-rounded-max="rounded-full">
-                            <div className="box-border flex flex-col items-start h-full px-2 py-8 mx-4 leading-6 text-center border-solid sm:flex-row sm:items-start sm:text-left">
-                                <div className="flex-shrink-0 p-3 font-sans text-gray-700 border border-gray-200 rounded-full" data-rounded="rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-700 align-middle stroke-current w-7 h-7" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M0 0h24v24H0z" stroke="none" />
-                                        <rect x="3" y="4" width="18" height="8" rx="3" />
-                                        <rect x="3" y="12" width="18" height="8" rx="3" />
-                                        <path d="M7 8v.01M7 16v.01" /></svg>
-
-                                </div>
-                                <div className="mt-4 font-sans text-left text-gray-700 border-0 border-gray-200 sm:mt-2 sm:ml-4">
-                                    <h6 className="box-border text-2xl font-bold leading-none tracking-wide text-left border-solid">Manage employees</h6>
-                                    <p className="box-border mx-0 mt-1 mb-0 font-medium leading-loose text-gray-400 border-solid sm:mt-4">
-                                        Stop giving passwords to your employees, and instead give them permissions to only do what you allow them to through our platform
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <Feature 
+                            name="Instagram integration"
+                            description="Full compatiblity with all of Instagram: Reels, posts, comments and more."
+                            svg={<svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7" fill-current viewBox="0 0 2476 2476"><path d="M825.4 1238c0-227.9 184.7-412.7 412.6-412.7 227.9 0 412.7 184.8 412.7 412.7 0 227.9-184.8 412.7-412.7 412.7-227.9 0-412.6-184.8-412.6-412.7m-223.1 0c0 351.1 284.6 635.7 635.7 635.7s635.7-284.6 635.7-635.7-284.6-635.7-635.7-635.7S602.3 886.9 602.3 1238m1148-660.9c0 82 66.5 148.6 148.6 148.6 82 0 148.6-66.6 148.6-148.6s-66.5-148.5-148.6-148.5-148.6 66.5-148.6 148.5M737.8 2245.7c-120.7-5.5-186.3-25.6-229.9-42.6-57.8-22.5-99-49.3-142.4-92.6-43.3-43.3-70.2-84.5-92.6-142.3-17-43.6-37.1-109.2-42.6-229.9-6-130.5-7.2-169.7-7.2-500.3s1.3-369.7 7.2-500.3c5.5-120.7 25.7-186.2 42.6-229.9 22.5-57.8 49.3-99 92.6-142.4 43.3-43.3 84.5-70.2 142.4-92.6 43.6-17 109.2-37.1 229.9-42.6 130.5-6 169.7-7.2 500.2-7.2 330.6 0 369.7 1.3 500.3 7.2 120.7 5.5 186.2 25.7 229.9 42.6 57.8 22.4 99 49.3 142.4 92.6 43.3 43.3 70.1 84.6 92.6 142.4 17 43.6 37.1 109.2 42.6 229.9 6 130.6 7.2 169.7 7.2 500.3 0 330.5-1.2 369.7-7.2 500.3-5.5 120.7-25.7 186.3-42.6 229.9-22.5 57.8-49.3 99-92.6 142.3-43.3 43.3-84.6 70.1-142.4 92.6-43.6 17-109.2 37.1-229.9 42.6-130.5 6-169.7 7.2-500.3 7.2-330.5 0-369.7-1.2-500.2-7.2M727.6 7.5c-131.8 6-221.8 26.9-300.5 57.5-81.4 31.6-150.4 74-219.3 142.8C139 276.6 96.6 345.6 65 427.1 34.4 505.8 13.5 595.8 7.5 727.6 1.4 859.6 0 901.8 0 1238s1.4 378.4 7.5 510.4c6 131.8 26.9 221.8 57.5 300.5 31.6 81.4 73.9 150.5 142.8 219.3 68.8 68.8 137.8 111.1 219.3 142.8 78.8 30.6 168.7 51.5 300.5 57.5 132.1 6 174.2 7.5 510.4 7.5 336.3 0 378.4-1.4 510.4-7.5 131.8-6 221.8-26.9 300.5-57.5 81.4-31.7 150.4-74 219.3-142.8 68.8-68.8 111.1-137.9 142.8-219.3 30.6-78.7 51.6-168.7 57.5-300.5 6-132.1 7.4-174.2 7.4-510.4s-1.4-378.4-7.4-510.4c-6-131.8-26.9-221.8-57.5-300.5-31.7-81.4-74-150.4-142.8-219.3C2199.4 139 2130.3 96.6 2049 65c-78.8-30.6-168.8-51.6-300.5-57.5-132-6-174.2-7.5-510.4-7.5-336.3 0-378.4 1.4-510.5 7.5"/></svg>}
+                        />
+                        <Feature
+                            name="Youtube integration"
+                            description="Full Youtube compatiblity with all features such as community posts, videos, shorts and comments."
+                            svg={<svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7" viewBox="5.368 5.414 53.9 53.9"><path fill="#FFF" d="M41.272 31.81c-4.942-2.641-9.674-5.069-14.511-7.604v15.165c5.09-2.767 10.455-5.301 14.532-7.561h-.021z"/><path fill="#E8E0E0" d="M41.272 31.81c-4.942-2.641-14.511-7.604-14.511-7.604l12.758 8.575c.001 0-2.324 1.289 1.753-.971z"/><path d="M27.691 51.242c-10.265-.189-13.771-.359-15.926-.803-1.458-.295-2.725-.95-3.654-1.9-.718-.719-1.289-1.816-1.732-3.338-.38-1.268-.528-2.323-.739-4.9-.323-5.816-.4-10.571 0-15.884.33-2.934.49-6.417 2.682-8.449 1.035-.951 2.239-1.563 3.591-1.816 2.112-.401 11.11-.718 20.425-.718 9.294 0 18.312.317 20.426.718 1.689.317 3.273 1.267 4.203 2.492 2 3.146 2.035 7.058 2.238 10.118.084 1.458.084 9.737 0 11.195-.316 4.836-.57 6.547-1.288 8.321-.444 1.12-.823 1.711-1.479 2.366a7.085 7.085 0 0 1-3.76 1.922c-8.883.668-16.426.813-24.987.676zM41.294 31.81c-4.942-2.641-9.674-5.09-14.511-7.625v15.166c5.09-2.767 10.456-5.302 14.532-7.562l-.021.021z"/></svg>}
+                        />
+                        <Feature
+                            name="TikTok integration"
+                            description="Complete compatiblity with all TikTok features. You get the jist."
+                            svg={<svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7 opacity-100 stroke-none stroke-1 [stroke-dasharray:none] [stroke-linecap:butt] [stroke-dashoffset:0] [stroke-linejoin:miter] [stroke-miterlimit:4] [fill:#000] [fill-rule:nonzero] stroke-0 [fill-rule:evenodd]" viewBox="0 0 500 500"><path d="M0 6.643C0 2.974 3 0 6.699 0c3.7 0 6.699 2.974 6.699 6.643 0 3.669-3 6.643-6.699 6.643-3.7 0-6.699-2.974-6.699-6.643z" transform="matrix(1.98 0 0 1.98 295.454 417.633)" vector-effect="non-scaling-stroke"/><path d="M161.167 81.186c10.944 7.819 24.352 12.42 38.832 12.42V65.755a39.26 39.26 0 0 1-8.155-.853v21.923c-14.479 0-27.885-4.601-38.832-12.42v56.835c0 28.432-23.06 51.479-51.505 51.479-10.613 0-20.478-3.207-28.673-8.707C82.187 183.57 95.23 189.5 109.66 189.5c28.447 0 51.508-23.047 51.508-51.48V81.186zm10.06-28.098c-5.593-6.107-9.265-14-10.06-22.726V26.78h-7.728c1.945 11.09 8.58 20.565 17.788 26.308zm-80.402 99.107a23.445 23.445 0 0 1-4.806-14.256c0-13.004 10.548-23.547 23.561-23.547a23.6 23.6 0 0 1 7.147 1.103V87.022a51.97 51.97 0 0 0-8.152-.469v22.162a23.619 23.619 0 0 0-7.15-1.103c-13.013 0-23.56 10.543-23.56 23.548 0 9.195 5.272 17.157 12.96 21.035z" transform="matrix(2.84 0 0 2.84 -105.003 -47.468)" vector-effect="non-scaling-stroke"/><path d="M153.012 74.405c10.947 7.819 24.353 12.42 38.832 12.42V64.902c-8.082-1.72-15.237-5.942-20.617-11.814-9.208-5.743-15.843-15.218-17.788-26.308H133.14v111.239c-.046 12.968-10.576 23.468-23.561 23.468-7.652 0-14.45-3.645-18.755-9.292-7.688-3.878-12.96-11.84-12.96-21.035 0-13.005 10.547-23.548 23.56-23.548 2.493 0 4.896.388 7.15 1.103V86.553c-27.945.577-50.42 23.399-50.42 51.467 0 14.011 5.597 26.713 14.68 35.993 8.195 5.5 18.06 8.707 28.673 8.707 28.445 0 51.505-23.048 51.505-51.479z" transform="matrix(2.84 0 0 2.84 -105.02 -47.48)" vector-effect="non-scaling-stroke"/><path d="M191.844 64.902v-5.928a38.84 38.84 0 0 1-20.617-5.887 38.948 38.948 0 0 0 20.617 11.815zM153.439 26.78a39.524 39.524 0 0 1-.427-3.198V20h-28.028v111.24c-.045 12.967-10.574 23.467-23.56 23.467-3.813 0-7.412-.904-10.6-2.512 4.305 5.647 11.103 9.292 18.755 9.292 12.984 0 23.515-10.5 23.561-23.468V26.78zm-44.864 59.773v-6.311a51.97 51.97 0 0 0-7.067-.479C73.06 79.763 50 102.811 50 131.24c0 17.824 9.063 33.532 22.835 42.772-9.083-9.28-14.68-21.982-14.68-35.993 0-28.067 22.474-50.889 50.42-51.466z" transform="matrix(2.84 0 0 2.84 -105.023 -47.508)" vector-effect="non-scaling-stroke"/></svg>}
+                        />
+                        <Feature
+                            name="Secure"
+                            description="Through the use of API's we do not require the password to any of your accounts."
+                            svg={<svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" className="leading-6 text-center text-gray-400 align-middle stroke-current w-7 h-7 opacity-100 stroke=none stroke-1 [stroke-dasharray:none] [stroke-linecap:butt] [stroke-dashoffset:0] [stroke-linejoin:miter] [stroke-miterlimit:4] [fill:#000] [fill-rule:nonzero]" viewBox="0 0 500 500"><path d="M505.17 227.5v-72.332C504.002 68.832 435.17-.002 350-.002c-85.17 0-154 68.832-154 154v72.332c-21 0-37.332 16.332-37.332 37.332v257.83c0 21 16.332 37.332 37.332 37.332h309.17c21 0 37.332-16.332 37.332-37.332v-256.66c-1.168-21-17.5-37.332-37.332-37.332zM385 462h-70l10.5-64.168c-9.332-7-15.168-18.668-15.168-31.5 0-22.168 18.668-40.832 40.832-40.832s40.832 18.668 40.832 40.832c0 12.832-5.832 24.5-15.168 31.5zm70-234.5H245v-72.332c0-57.168 46.668-105 105-105 57.168 0 105 46.668 105 105z" transform="matrix(.82 0 0 .82 -37.004 20.314)" vector-effect="non-scaling-stroke"/></svg>}
+                        />
+                        <Feature
+                            name="Fast"
+                            description="Saves you tons of time so you can get back to doing what you love."
+                            svg={<svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-700 align-middle stroke-current w-7 h-7" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none" /><path d="M13 3v7h6l-8 11v-7H5l8-11" /></svg>}
+                        />
+                        <Feature
+                            name="Manage employees"
+                            description="Stop giving passwords to your employees, and instead give them permissions to only do what you allow them to through our platform"
+                            svg={<svg xmlns="http://www.w3.org/2000/svg" className="leading-6 text-center text-gray-700 align-middle stroke-current w-7 h-7" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none" /><rect x="3" y="4" width="18" height="8" rx="3" /><rect x="3" y="12" width="18" height="8" rx="3" /><path d="M7 8v.01M7 16v.01" /></svg>}
+                        />
                     </div>
 
                     <div className="absolute top-0 left-0 -ml-56 opacity-25 w-96 h-96">
@@ -155,52 +102,25 @@ function FrontPage() {
                         </svg>
                     </div>
                 </section>
-                <section className="py-16 bg-white md:py-20 lg:py-24" data-tails-scripts="//unpkg.com/alpinejs">
+                <section className="py-16 bg-white md:py-20 lg:py-24">
                     <div className="max-w-5xl px-12 mx-auto xl:px-0">
 
                         <h2 className="text-3xl font-black md:text-4xl lg:text-6xl xl:text-7xl">Frequently Asked Questions</h2>
                         <p className="mt-4 text-xl font-thin text-gray-700 lg:text-2xl">Here are some of the most common frequently asked questions</p>
 
                         <div className="relative mt-12 space-y-3">
-                            <div className="relative overflow-hidden border-b border-gray-100 select-none">
-                                <h4 className="flex items-center justify-between px-2 text-lg font-medium text-gray-700 cursor-pointer sm:text-xl md:text-2xl py-7 hover:text-gray-900">
-                                    <span className="">Which social media platforms do you support?</span>
-                                    <svg className="w-6 h-6 mr-2 transition-all duration-200 ease-out transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </h4>
-                                <p className="px-2 pt-0 -mt-2 text-gray-400 sm:text-lg py-7">We support Tiktok, Instagram, Youtube (+ Youtube Shorts) currently and are working on increasing the amount of supported platforms soon!</p>
-                            </div>
-
-                            <div className="relative overflow-hidden border-b border-gray-100 select-none">
-                                <h4 className="flex items-center justify-between px-2 text-lg font-medium text-gray-700 cursor-pointer sm:text-xl md:text-2xl py-7 hover:text-gray-900">
-                                    <span>What if I like making shortform content for my company in Tiktok's built in editor?</span>
-                                    <svg className="w-6 h-6 mr-2 transition-all duration-200 ease-out transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </h4>
-                                <p className="px-2 pt-0 -mt-2 text-gray-400 sm:text-lg py-7">You can clone any video posted to any of your social media platforms to accounts on other platforms. Say you edit and post a Tiktok, with the press of a few buttons it can be automatically reposted on Instagram Reels, Youtube Shorts, etc.</p>
-                            </div>
-
-                            <div className="relative overflow-hidden border-b border-gray-100 select-none">
-                                <h4 className="flex items-center justify-between px-2 text-lg font-medium text-gray-700 cursor-pointer sm:text-xl md:text-2xl py-7 hover:text-gray-900">
-                                    <span>Do you have a mobile app?</span>
-                                    <svg className="w-6 h-6 mr-2 transition-all duration-200 ease-out transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </h4>
-                                <p className="px-2 pt-0 -mt-2 text-gray-400 sm:text-lg py-7">We currently do not have a mobile app, but it is in the works and should be ready soon</p>
-                            </div>
-
-                            <div className="relative overflow-hidden border-b border-gray-100 select-none">
-                                <h4 className="flex items-center justify-between px-2 text-lg font-medium text-gray-700 cursor-pointer sm:text-xl md:text-2xl py-7 hover:text-gray-900">
-                                    <span>Do You Offer Any Developer SDK's?</span>
-                                    <svg className="w-6 h-6 mr-2 transition-all duration-200 ease-out transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </h4>
-                                <p className="px-2 pt-0 -mt-2 text-gray-400 sm:text-lg py-7">Absolutely, we have an SDK for most of the popular languages and frameworks. Be sure to visit our <a href="#_" className="font-medium text-purple-600 underline" data-primary="purple-600">list of SDK's</a> to learn how you can build on top of our service.</p>
-                            </div>
-
-                            <div className="relative overflow-hidden border-b border-gray-100 select-none">
-                                <h4 className="flex items-center justify-between px-2 text-lg font-medium text-gray-700 cursor-pointer sm:text-xl md:text-2xl py-7 hover:text-gray-900">
-                                    <span>Do You Have An Affiliate Program?</span>
-                                    <svg className="w-6 h-6 mr-2 transition-all duration-200 ease-out transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </h4>
-                                <p className="px-2 pt-0 -mt-2 text-gray-400 sm:text-lg py-7">Yes. We are utilizing <a href="https://paddle.com" className="font-medium text-purple-600 underline" data-primary="purple-600">paddle</a>, which has a fully functional affiliate program. <a href="#_" className="font-medium text-purple-600 underline" data-primary="purple-600">Click here</a> to signup as an affiliate.</p>
-                            </div>
+                            <FAQ 
+                                question = "Which social media platforms do you support?"
+                                answer = "We support Tiktok, Instagram, Youtube (+ Youtube Shorts) currently and are working on increasing the amount of supported platforms soon!"
+                            />
+                            <FAQ
+                                question = "What if I like making shortform content for my company in Tiktok's built in editor?"
+                                answer = "You can clone any video posted to any of your social media platforms to accounts on other platforms. Say you edit and post a Tiktok, with the press of a few buttons it can be automatically reposted on Instagram Reels, Youtube Shorts, etc."
+                            />
+                            <FAQ
+                                question = "Do you have a mobile app?"
+                                answer = "We currently do not have a mobile app, but it is in the works and should be ready soon"
+                            />
                         </div>
                     </div>
                 </section>
