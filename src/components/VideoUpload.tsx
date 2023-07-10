@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Video } from "../models/Video"
 import GoogleAuth from "../services/GoogleAuth";
-import { serialize } from 'object-to-formdata';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
