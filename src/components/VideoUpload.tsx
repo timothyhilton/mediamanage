@@ -42,7 +42,7 @@ function VideoUpload(){
 
         if(authCode != ""){
             try {
-                axios.post(apiUrl, formData, { headers: {"Content-Type": "multipart/form-data"}})
+                axios.post(`${apiUrl}/video`, formData, { headers: {"Content-Type": "multipart/form-data"}})
                     .then(res => console.log(res));
             } 
             catch (exception){
