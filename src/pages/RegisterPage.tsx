@@ -1,6 +1,8 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
+import ButtonLoading from "../components/ButtonLoading";
+import ErrorMessage from "../components/Auth/ErrorMessage";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -11,8 +13,10 @@ function RegisterPage(){
         password:'',
         password_confirmation:'',
     });
-    const [errorMessage, setErrorMessage] = useState({});
+    const [registerButtonContents, setRegisterButtonContents] = useState(<p>Register</p>);
+    const [errorMessageDiv, setErrorMessageDiv] = useState(<div />);
     const navigate = useNavigate();
+    const axiosErrorMessage = AxiosError;
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
         setData(data => ({...data, [event.target.id]: event.target.value}));
@@ -21,21 +25,41 @@ function RegisterPage(){
 
     function handleFormSubmit(){
         if(data.password == data.password_confirmation){
+            setRegisterButtonContents(<ButtonLoading />);
             axios.post(`${apiUrl}/auth/register`, data, { headers: {"Content-Type": "application/json"}})
                 .then(res => {
                     console.log(res);
                     navigate("/home");
                 })
-                .catch(err => console.log(err.response.data));
+                .catch(err => handleError(err));
         }
         else{
-            setErrorMessage("Passwords do not match!");
+            handleError("pwdmatch");
         }
     }
 
-    useEffect(()=>{
-        console.log(errorMessage);
-    }, [errorMessage])
+    function handleError(err: any){
+        console.log(err);
+        if(err == "pwdmatch"){
+            setErrorMessageDiv(<ErrorMessage errors={["Passwords do not match!"]} />);
+            setRegisterButtonContents(<p>Register</p>);
+            return
+        }
+        if(err.message == "Network Error"){
+            updateErrElements(["Can't connect to server"]);
+        }
+        if(err.response.data.errors){
+            updateErrElements(Object.values(err.response.data.errors));
+        } 
+        else if(err.response.data){
+            updateErrElements(Object.values(err.response.data));
+        }
+    }
+
+    function updateErrElements(errors: string[]){
+        setErrorMessageDiv(<ErrorMessage errors={errors} />);
+            setRegisterButtonContents(<p>Register</p>);
+    }
 
     return(
         <>
@@ -50,6 +74,8 @@ function RegisterPage(){
                     </a>
                 </p>
             </div>
+
+            {errorMessageDiv}
 
             <div className="flex flex-col justify-center pb-10 sm:pb-20 sm:px-6 lg:px-8">
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -101,8 +127,10 @@ function RegisterPage(){
                             <div className="flex flex-col items-center justify-center text-sm leading-5">
                                 <span className="block w-full mt-5 rounded-md shadow-sm">
                                     <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
-                                        Register
+                                        {registerButtonContents}
                                     </button>
+
+                                    
                                 </span>
                                 <div className="flex items-center justify-between mt-6">
                                     <p className="mt-3 font-medium focus:underline">Already have an account?</p>

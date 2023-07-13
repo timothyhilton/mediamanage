@@ -6,7 +6,7 @@ function GuestBar(){
                     Pricing
                 </a>
                 <div className="w-1 h-5 mx-10 border-r border-gray-300"></div>
-                <a href="{{ route('login') }}" className="text-base font-medium leading-6 text-gray-500 whitespace-no-wrap hover:text-blue-600 focus:outline-none focus:text-gray-900">
+                <a href="login" className="text-base font-medium leading-6 text-gray-500 whitespace-no-wrap hover:text-blue-600 focus:outline-none focus:text-gray-900">
                     Sign in
                 </a>
                 <span className="inline-flex rounded-md shadow-sm">

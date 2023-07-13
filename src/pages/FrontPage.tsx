@@ -27,7 +27,7 @@ function FrontPage() {
                         </div>
                     </div>
                     <div className="relative lg:w-1/2">
-                        <img src="/public/hero.jpg" alt="Hero Image" className="object-cover w-full lg:absolute h-80 lg:h-full"></img>
+                        <img src="/hero.jpg" alt="Hero Image" className="object-cover w-full lg:absolute h-80 lg:h-full"></img>
                     </div>
                 </section>
                 <section className="w-full pt-8 pb-16 bg-gray-100">
