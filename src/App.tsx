@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import VideoUpload from './components/VideoUpload';
 import FrontPage from './pages/FrontPage';
 import { Routes, Route } from 'react-router-dom';
@@ -7,20 +7,34 @@ import NavBar from './components/NavBar';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import jwt_decode from 'jwt-decode';
 
 function App() {
     const [token, setToken] = useState("");
 
+    useEffect(() => {
+        if(token != ""){
+            let decodedToken: {} = jwt_decode(token);
+            let currentDate = new Date();
+
+            if (decodedToken.exp * 1000 < currentDate.getTime()) {
+                console.log("Token expired.");
+            } else {
+                console.log("Valid token");   
+                result = true;
+            }
+        }
+    }, [token])
+
     return (
         <>
             <div className="bg-gray-50">
-                <NavBar />
+                <NavBar />  
                 <Routes>
                     <Route path="/" element={<FrontPage />} />
-                    <Route path="/video" element={<VideoUpload />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/login" element={<LoginPage setToken={setToken}/>} />
-                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/home" element={<HomePage token={token} />} />
                 </Routes>
             </div>
         </>
