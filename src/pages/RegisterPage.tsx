@@ -20,17 +20,13 @@ function RegisterPage(){
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
         setData(data => ({...data, [event.target.id]: event.target.value}));
-        console.log(data);
     }
 
     function handleFormSubmit(){
         if(data.password == data.password_confirmation){
             setRegisterButtonContents(<ButtonLoading />);
             axios.post(`${apiUrl}/auth/register`, data, { headers: {"Content-Type": "application/json"}})
-                .then(res => {
-                    console.log(res);
-                    navigate("/home");
-                })
+                .then(res => handleRes(res))
                 .catch(err => handleError(err));
         }
         else{
@@ -38,27 +34,34 @@ function RegisterPage(){
         }
     }
 
+    function handleRes(res: any){
+        console.log(res);
+        navigate("/home");
+    }
+
     function handleError(err: any){
         console.log(err);
-        if(err == "pwdmatch"){
-            setErrorMessageDiv(<ErrorMessage errors={["Passwords do not match!"]} />);
-            setRegisterButtonContents(<p>Register</p>);
-            return
+        try{
+            if(err == "pwdmatch"){
+                updateErrElements(["Passwords do not match!"]);
+            }
+            if(err.message == "Network Error"){
+                updateErrElements(["Can't connect to server"]);
+            }
+            if(err.response.data.errors){
+                updateErrElements(Object.values(err.response.data.errors));
+            } else if(err.response.data){
+                updateErrElements(Object.values(err.response.data));
+            }
         }
-        if(err.message == "Network Error"){
-            updateErrElements(["Can't connect to server"]);
-        }
-        if(err.response.data.errors){
-            updateErrElements(Object.values(err.response.data.errors));
-        } 
-        else if(err.response.data){
-            updateErrElements(Object.values(err.response.data));
+        catch{
+            updateErrElements([JSON.stringify(err)]);
         }
     }
 
     function updateErrElements(errors: string[]){
         setErrorMessageDiv(<ErrorMessage errors={errors} />);
-            setRegisterButtonContents(<p>Register</p>);
+        setRegisterButtonContents(<p>Register</p>);
     }
 
     return(

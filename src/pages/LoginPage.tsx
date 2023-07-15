@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import ButtonLoading from "../components/ButtonLoading";
@@ -6,7 +6,7 @@ import ErrorMessage from "../components/Auth/ErrorMessage";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function RegisterPage(){
+function LoginPage(props: any){
     const [data, setData] = useState({
         email: '',
         password: ''
@@ -18,17 +18,26 @@ function RegisterPage(){
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
         setData(data => ({...data, [event.target.id]: event.target.value}));
-        console.log(data);
     }
 
     function handleFormSubmit(){
         axios.post(`${apiUrl}/auth/login`, data, { headers: {"Content-Type": "application/json"}})
-            .then(res => console.log(res))
+            .then(res => handleRes(res))
             .catch(err => handleError(err))
     }
 
-    function handleError(err: any){
-        console.log(err);
+    function handleError(err: AxiosError){
+        try{
+            setErrorMessageDiv(<ErrorMessage errors={[err.response!.data]}/>)
+        }
+        catch{
+            setErrorMessageDiv(<ErrorMessage errors={[JSON.stringify(err)]}/>)
+        }
+    }
+
+    function handleRes(res: AxiosResponse){
+        props.setToken(res.data.token);
+        navigate("/home");
     }
 
     function updateErrElements(errors: string[]){
@@ -104,4 +113,4 @@ function RegisterPage(){
     )
 }
 
-export default RegisterPage
+export default LoginPage

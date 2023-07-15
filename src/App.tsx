@@ -9,18 +9,20 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
 function App() {
+    const [token, setToken] = useState("");
+
     return (
         <>
-            <body className="bg-gray-50">
+            <div className="bg-gray-50">
                 <NavBar />
                 <Routes>
                     <Route path="/" element={<FrontPage />} />
                     <Route path="/video" element={<VideoUpload />} />
                     <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/login" element={<LoginPage setToken={setToken}/>} />
                     <Route path="/home" element={<HomePage />} />
                 </Routes>
-            </body>
+            </div>
         </>
     )
 }
