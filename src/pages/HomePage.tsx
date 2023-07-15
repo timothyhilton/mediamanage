@@ -1,8 +1,8 @@
 import VideoUpload from "../components/VideoUpload"
 
-function HomePage(){
+function HomePage(props: any){
     return(
-        <VideoUpload />
+        <VideoUpload token={props.token} />
     )
 }
 

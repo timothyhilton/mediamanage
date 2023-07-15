@@ -5,7 +5,7 @@ import GoogleAuth from "../services/GoogleAuth";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function VideoUpload(){
+function VideoUpload(props: any){
     const [video, setVideo] = useState({
             title: '',
             description: '',
@@ -23,7 +23,6 @@ function VideoUpload(){
         else {
             setVideo(video => ({...video, [event.target.id]: event.target.value}));
         }
-        console.log(video);
     }
 
     function handleFormSubmit(){
@@ -42,7 +41,13 @@ function VideoUpload(){
 
         if(authCode != ""){
             try {
-                axios.post(`${apiUrl}/video`, formData, { headers: {"Content-Type": "multipart/form-data"}})
+                let config = {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Authorization": `Bearer ${props.token}`
+                    }
+                }
+                axios.post(`${apiUrl}/video`, formData, config)
                     .then(res => console.log(res));
             } 
             catch (exception){

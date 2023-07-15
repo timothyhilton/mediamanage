@@ -8,20 +8,20 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import jwt_decode from 'jwt-decode';
+import { AuthToken } from './models/AuthToken';
 
 function App() {
     const [token, setToken] = useState("");
 
     useEffect(() => {
         if(token != ""){
-            let decodedToken: {} = jwt_decode(token);
+            let decodedToken = jwt_decode<AuthToken>(token);
             let currentDate = new Date();
 
             if (decodedToken.exp * 1000 < currentDate.getTime()) {
                 console.log("Token expired.");
             } else {
                 console.log("Valid token");   
-                result = true;
             }
         }
     }, [token])
