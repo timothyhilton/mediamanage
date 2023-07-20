@@ -14,7 +14,6 @@ function LoginPage(props: any){
     const [registerButtonContents, setRegisterButtonContents] = useState(<p>Sign in</p>);
     const [errorMessageDiv, setErrorMessageDiv] = useState(<div />);
     const navigate = useNavigate();
-    const axiosErrorMessage = AxiosError;
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
         setData(data => ({...data, [event.target.id]: event.target.value}));
@@ -28,10 +27,18 @@ function LoginPage(props: any){
 
     function handleError(err: AxiosError){
         try{
-            setErrorMessageDiv(<ErrorMessage errors={[err.response!.data]}/>)
+            setErrorMessageDiv(
+                <ErrorMessage errors={
+                    [err.response!.data]
+                }/>
+            )
         }
         catch{
-            setErrorMessageDiv(<ErrorMessage errors={[JSON.stringify(err)]}/>)
+            setErrorMessageDiv(
+                <ErrorMessage errors={
+                    [JSON.stringify(err)]
+                }/>
+            )
         }
     }
 
@@ -40,10 +47,6 @@ function LoginPage(props: any){
         navigate("/home");
     }
 
-    function updateErrElements(errors: string[]){
-        setErrorMessageDiv(<ErrorMessage errors={errors} />);
-            setRegisterButtonContents(<p>Register</p>);
-    }
 
     return(
         <>

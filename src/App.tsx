@@ -1,6 +1,5 @@
 import './App.css'
 import { useEffect, useState } from 'react';
-import VideoUpload from './components/VideoUpload';
 import FrontPage from './pages/FrontPage';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './components/NavBar';
@@ -9,19 +8,10 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import jwt_decode from 'jwt-decode';
 import { AuthToken } from './models/AuthToken';
+import { useNavigate } from "react-router-dom"
 
 function App() {
     const [token, setToken] = useState("");
-    const [home, setHome] = useState(<HomePage />);
-
-    useEffect(() => {
-        if(isTokenValid()){
-            setHome(<HomePage />);
-        }
-        else{
-            setHome(<Navigate to="/login" />);
-        }
-    }, [token])
 
     function isTokenValid(): boolean{
         if(token == "") { return false; }
@@ -46,7 +36,14 @@ function App() {
                     <Route path="/" element={<FrontPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/login" element={<LoginPage setToken={setToken}/>} />
-                    <Route path="/home" element={home}/>
+                    <Route path='/home'
+                        element=
+                        {isTokenValid() ? (
+                            <HomePage />
+                            ) : (
+                            <Navigate to="/login" />
+                        )}  
+                    />
                 </Routes>
             </div>
         </>
