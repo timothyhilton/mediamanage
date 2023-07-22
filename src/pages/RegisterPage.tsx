@@ -64,6 +64,12 @@ function RegisterPage(){
         setRegisterButtonContents(<p>Register</p>);
     }
 
+    function handleEnterKeyDetection(e: any){
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            handleFormSubmit();
+        }
+    }
+
     return(
         <>
             <div className="sm:mx-auto sm:w-full sm:max-w-md sm:pt-10">
@@ -97,7 +103,7 @@ function RegisterPage(){
                                     Username
                                 </label>
                                 <div className="mt-1 rounded-md shadow-sm">
-                                    <input id="username" type="text" name="username" onChange={handleFormChange} required className="w-full form-input"/>
+                                    <input id="username" type="text" name="username" onKeyUp={handleEnterKeyDetection} onChange={handleFormChange} required className="w-full form-input"/>
                                 </div>
                             </div>
                             <div className="mt-6">
@@ -105,7 +111,7 @@ function RegisterPage(){
                                     Email Address
                                 </label>
                                 <div className="mt-1 rounded-md shadow-sm">
-                                    <input id="email" type="email" name="email" onChange={handleFormChange} required className="w-full form-input"/>
+                                    <input id="email" type="email" name="email" onKeyUp={handleEnterKeyDetection} onChange={handleFormChange} required className="w-full form-input"/>
                                 </div>
                             </div>
 
@@ -114,7 +120,7 @@ function RegisterPage(){
                                     Password
                                 </label>
                                 <div className="mt-1 rounded-md shadow-sm">
-                                    <input id="password" type="password" name="password" onChange={handleFormChange} required className="w-full form-input"/>
+                                    <input id="password" type="password" name="password" onKeyUp={handleEnterKeyDetection} onChange={handleFormChange} required className="w-full form-input"/>
                                 </div>
                             </div>
 
@@ -123,7 +129,7 @@ function RegisterPage(){
                                     Confirm Password
                                 </label>
                                 <div className="mt-1 rounded-md shadow-sm">
-                                    <input id="password_confirmation" type="password" name="password_confirmation" onChange={handleFormChange} required className="w-full form-input"/>
+                                    <input id="password_confirmation" type="password" name="password_confirmation" onKeyUp={handleEnterKeyDetection} onChange={handleFormChange} required className="w-full form-input"/>
                                 </div>
                             </div>
 

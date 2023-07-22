@@ -47,6 +47,12 @@ function LoginPage(props: any){
         navigate("/home");
     }
 
+    function handleEnterKeyDetection(e: any){
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            handleFormSubmit();
+        }
+    }
+
 
     return(
         <>
@@ -73,7 +79,7 @@ function LoginPage(props: any){
                                     Email Address
                                 </label>
                                 <div className="mt-1 rounded-md shadow-sm">
-                                    <input id="email" type="email" name="email" onChange={handleFormChange} required className="w-full form-input"/>
+                                    <input id="email" type="email" name="email" onKeyUp={handleEnterKeyDetection} onChange={handleFormChange} required className="w-full form-input"/>
                                 </div>
                             </div>
 
@@ -82,7 +88,7 @@ function LoginPage(props: any){
                                     Password
                                 </label>
                                 <div className="mt-1 rounded-md shadow-sm">
-                                    <input id="password" type="password" name="password" onChange={handleFormChange} required className="w-full form-input"/>
+                                    <input id="password" onKeyUp={handleEnterKeyDetection} type="password" name="password" onChange={handleFormChange} required className="w-full form-input"/>
                                 </div>
                             </div>
 
