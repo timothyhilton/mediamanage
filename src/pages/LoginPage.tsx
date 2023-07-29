@@ -11,7 +11,7 @@ function LoginPage(props: any){
         email: '',
         password: ''
     });
-    const [registerButtonContents, setRegisterButtonContents] = useState(<p>Sign in</p>);
+    const [LoginButtonContents, setLoginButtonContents] = useState(<p>Sign in</p>);
     const [errorMessageDiv, setErrorMessageDiv] = useState(<div />);
     const navigate = useNavigate();
 
@@ -20,12 +20,14 @@ function LoginPage(props: any){
     }
 
     function handleFormSubmit(){
+        setLoginButtonContents(<ButtonLoading />);
         axios.post(`${apiUrl}/auth/login`, data, { headers: {"Content-Type": "application/json"}})
             .then(res => handleRes(res))
             .catch(err => handleError(err))
     }
 
     function handleError(err: AxiosError){
+        setLoginButtonContents(<p>Sign in</p>)
         try{
             setErrorMessageDiv(
                 <ErrorMessage errors={
@@ -110,7 +112,7 @@ function LoginPage(props: any){
                             <div className="flex flex-col items-center justify-center text-sm leading-5">
                                 <span className="block w-full mt-5 rounded-md shadow-sm">
                                     <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
-                                        {registerButtonContents}
+                                        {LoginButtonContents}
                                     </button>
                                 </span>
                             </div>

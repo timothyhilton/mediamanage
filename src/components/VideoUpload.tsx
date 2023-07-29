@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Video } from "../models/Video"
 import GoogleAuth from "../services/GoogleAuth";
+import ButtonLoading from "./ButtonLoading";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -9,10 +10,10 @@ function VideoUpload(props: any){
     const [video, setVideo] = useState({
             title: '',
             description: '',
-            fileExtension: 'mp4',
-            authCode: '',
             file: new File([""], "")
     } as Video )
+
+    const[postVideoButtonContents, setPostVideoButtonContents] = useState(<p>Post Video</p>);
 
     const googleAuth = new GoogleAuth();
 
@@ -26,38 +27,37 @@ function VideoUpload(props: any){
     }
 
     function handleFormSubmit(){
-        googleAuth.runWithAuth(postVideo);
+        postVideo();
     }
 
-    async function postVideo(authCode: string){
-        video.authCode = authCode;
+    async function postVideo(){
+        setPostVideoButtonContents(<ButtonLoading />);
 
         const formData = new FormData();
         formData.append("title", video.title);
         formData.append("description", video.description);
-        formData.append("fileExtension", video.fileExtension);
-        formData.append("authCode", video.authCode);
         formData.append("file", video.file);
 
-        if(authCode != ""){
-            try {
-                let config = {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        "Authorization": `Bearer ${props.token}`
-                    }
-                }
-                axios.post(`${apiUrl}/video`, formData, config)
-                    .then(res => console.log(res));
-            } 
-            catch (exception){
-                console.log(exception);
+        let config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${props.token}`
             }
-        } 
-        else {
-            console.log("Not posting, no auth code")
-            console.log(authCode);
         }
+
+        axios.post(`${apiUrl}/video`, formData, config)
+            .then(res => handleRes(res))
+            .catch(err => handleErr(err));
+    }
+
+    function handleErr(err: any){
+        console.log(err);
+        setPostVideoButtonContents(<p>Post Video</p>);
+    }
+
+    function handleRes(res: any){
+        console.log(res);
+        setPostVideoButtonContents(<p>Post Video</p>);
     }
 
     return (
@@ -67,10 +67,10 @@ function VideoUpload(props: any){
                     Youtube Video Upload
                 </h2>
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                    <label className="block text-sm font-medium leading-5 text-gray-700">
                         Video title
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    <input className="mt-1 rounded-md shadow-sm w-full form-input" 
                         id="title" 
                         type="text" 
                         placeholder="title"
@@ -78,11 +78,11 @@ function VideoUpload(props: any){
                         onChange={handleFormChange}
                     />
                 </div>
-                <div className="mb-1">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                <div className="mb-4">
+                    <label className="block text-sm font-medium leading-5 text-gray-700">
                         Video description
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                    <input className="mt-1 rounded-md shadow-sm w-full form-input" 
                         id="description" 
                         type="text" 
                         placeholder="description" 
@@ -90,25 +90,22 @@ function VideoUpload(props: any){
                         onChange={handleFormChange}
                     />
                 </div>
-                <div className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Upload file
-                    </label>
+                <div className="mb-4">
                     <input 
                         type="file" 
                         id="file" 
                         className="hidden"
                         onChange={handleFormChange}
                     />
-                    <button className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                    <button className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-gray-600 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700" 
                         onClick={() => document.getElementById('file')!.click()} 
                         type="button"
                     >
                         Upload file
                     </button>
                 </div>
-                <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleFormSubmit}>
-                    Post Video
+                <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                    {postVideoButtonContents}
                 </button>
             </form>
         </div>

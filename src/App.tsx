@@ -39,7 +39,7 @@ function App() {
                     <Route path='/home'
                         element=
                         {isTokenValid() ? (
-                            <HomePage />
+                            <HomePage token={token} />
                             ) : (
                             <Navigate to="/login" />
                         )}  
