@@ -9,8 +9,6 @@ function VideoUpload(props: any){
     const [video, setVideo] = useState({
             title: '',
             description: '',
-            fileExtension: 'mp4',
-            authCode: '',
             file: new File([""], "")
     } as Video )
 
@@ -30,34 +28,26 @@ function VideoUpload(props: any){
     }
 
     async function postVideo(authCode: string){
-        video.authCode = authCode;
-
         const formData = new FormData();
         formData.append("title", video.title);
         formData.append("description", video.description);
-        formData.append("fileExtension", video.fileExtension);
-        formData.append("authCode", video.authCode);
         formData.append("file", video.file);
 
-        if(authCode != ""){
-            try {
-                let config = {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        "Authorization": `Bearer ${props.token}`
-                    }
+        /*try {
+            let config = {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": `Bearer ${props.token}`
                 }
-                axios.post(`${apiUrl}/video`, formData, config)
-                    .then(res => console.log(res));
-            } 
-            catch (exception){
-                console.log(exception);
             }
+            axios.post(`${apiUrl}/video`, formData, config)
+                .then(res => console.log(res));
         } 
-        else {
-            console.log("Not posting, no auth code")
-            console.log(authCode);
-        }
+        catch (exception){
+            console.log(exception);
+        }*/
+
+        console.log(authCode)
     }
 
     return (

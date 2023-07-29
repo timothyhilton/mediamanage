@@ -20,6 +20,7 @@ class GoogleAuth {
                 func(response.code);
             }
         })
+        
         client.requestCode();
     }
 }
