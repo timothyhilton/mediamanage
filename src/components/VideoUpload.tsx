@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Video } from "../models/Video"
-import GoogleAuth from "../services/GoogleAuth";
 import ButtonLoading from "./ButtonLoading";
+import { TokenProp } from "../models/TokenProp";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function VideoUpload(props: any){
+function VideoUpload({ token }: TokenProp){
     const [video, setVideo] = useState({
             title: '',
             description: '',
@@ -14,8 +14,6 @@ function VideoUpload(props: any){
     } as Video )
 
     const[postVideoButtonContents, setPostVideoButtonContents] = useState(<p>Post Video</p>);
-
-    const googleAuth = new GoogleAuth();
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
         if(event.target.type == "file") {
@@ -41,7 +39,7 @@ function VideoUpload(props: any){
         let config = {
             headers: {
                 "Content-Type": "multipart/form-data",
-                "Authorization": `Bearer ${props.token}`
+                "Authorization": `Bearer ${token}`
             }
         }
 
