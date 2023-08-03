@@ -1,22 +1,23 @@
-import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import ButtonLoading from "../components/ButtonLoading";
 import ErrorMessage from "../components/Auth/ErrorMessage";
+import { TokenProps } from "../models/TokenProps";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function RegisterPage(){
+function RegisterPage({ setToken }: TokenProps){
     const [data, setData] = useState({
         username:'',
         email:'',
         password:'',
         password_confirmation:'',
     });
+
     const [registerButtonContents, setRegisterButtonContents] = useState(<p>Register</p>);
     const [errorMessageDiv, setErrorMessageDiv] = useState(<div />);
     const navigate = useNavigate();
-    const axiosErrorMessage = AxiosError;
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
         setData(data => ({...data, [event.target.id]: event.target.value}));
@@ -30,15 +31,20 @@ function RegisterPage(){
                 .catch(err => handleError(err));
         }
         else{
-            handleError("pwdmatch");
+            handleError("passwords don't match");
         }
     }
 
     function handleRes(res: any){
-        console.log(res);
-        navigate("/home");
+        axios.post(`${apiUrl}/auth/login`, data, { headers: {"Content-Type": "application/json"}})
+                .then(res => {
+                    setToken(res.data.token);
+                    navigate("/home");
+                })
+                .catch(err => handleError(err));
     }
 
+    // todo: fix this abomination
     function handleError(err: any){
         console.log(err);
         try{

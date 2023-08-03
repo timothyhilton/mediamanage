@@ -2,13 +2,14 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import FrontPage from './pages/FrontPage';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import jwt_decode from 'jwt-decode';
 import { AuthToken } from './models/AuthToken';
 import { useNavigate } from "react-router-dom"
+import GuestBar from './components/NavBar/GuestBar';
 
 function App() {
     const [token, setToken] = useState("");
@@ -31,10 +32,14 @@ function App() {
     return (
         <>
             <div className="bg-gray-50">
-                <NavBar />  
+                {isTokenValid() ? (
+                    <NavBar token={token}/>
+                    ) : (
+                    <GuestBar />
+                )}
                 <Routes>
                     <Route path="/" element={<FrontPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/register" element={<RegisterPage setToken={setToken} />} />
                     <Route path="/login" element={<LoginPage setToken={setToken}/>} />
                     <Route path='/home'
                         element=

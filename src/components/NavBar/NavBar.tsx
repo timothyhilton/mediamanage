@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import GuestBar from "./GuestBar"
 
-function GuestBar(){
+function NavBar(props: any){
     return(
         <>
             <div className="px-8 mx-auto xl:px-5 max-w-7xl">
@@ -19,17 +20,14 @@ function GuestBar(){
                         <Link to="login" className="text-base font-medium leading-6 text-gray-500 whitespace-no-wrap hover:text-blue-600 focus:outline-none focus:text-gray-900">
                             Sign in
                         </Link>
-                        <span className="inline-flex rounded-md shadow-sm">
-                            <Link to="register" className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-500 hover:bg-blue-600 focus:outline-none focus:border-indigo-700 active:bg-blue-700">
-                                Sign up
-                            </Link>
-                        </span>
+                        <button className="drop-shadow-md">
+                            <img src="/default-profile.jpg" className="h-10 rounded-full"/>
+                        </button>
                     </nav>
-
                 </div>
             </div>
         </>
     )
 }
 
-export default GuestBar
+export default NavBar

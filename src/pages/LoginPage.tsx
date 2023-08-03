@@ -1,12 +1,13 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import ButtonLoading from "../components/ButtonLoading";
 import ErrorMessage from "../components/Auth/ErrorMessage";
+import { TokenProps } from "../models/TokenProps"
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function LoginPage(props: any){
+function LoginPage({ setToken }: TokenProps){
     const [data, setData] = useState({
         email: '',
         password: ''
@@ -45,7 +46,7 @@ function LoginPage(props: any){
     }
 
     function handleRes(res: AxiosResponse){
-        props.setToken(res.data.token);
+        setToken(res.data.token);
         navigate("/home");
     }
 
