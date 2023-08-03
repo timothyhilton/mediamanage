@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import GuestBar from "./GuestBar"
+import { TokenProp } from "../../models/TokenProp"
 
-function NavBar(props: any){
+function NavBar({ token }: TokenProp){
     return(
         <>
             <div className="px-8 mx-auto xl:px-5 max-w-7xl">

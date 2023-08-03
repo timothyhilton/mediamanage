@@ -1,9 +1,9 @@
 function ErrorMessage(props: any){
     if(props.errors){
         var errors = 
-        props.errors.map((error: string) =>
-            <p className="text-red-">{error}</p>
-        );
+            props.errors.map((error: string) =>
+                <p className="text-red-">{error}</p>
+            );
     }
 
     return (

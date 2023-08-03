@@ -8,7 +8,6 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import jwt_decode from 'jwt-decode';
 import { AuthToken } from './models/AuthToken';
-import { useNavigate } from "react-router-dom"
 import GuestBar from './components/NavBar/GuestBar';
 
 function App() {

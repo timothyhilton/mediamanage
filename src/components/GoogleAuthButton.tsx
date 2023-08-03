@@ -1,9 +1,11 @@
 import axios from "axios";
 import GoogleAuth from "../services/GoogleAuth";
+import { TokenProps } from "../models/TokenProps";
+import { TokenProp } from "../models/TokenProp";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function GoogleAuthButton(props: any){
+function GoogleAuthButton({ token }: TokenProp){
     const googleAuth = new GoogleAuth();
 
     function handleButton(){
@@ -12,12 +14,12 @@ function GoogleAuthButton(props: any){
 
     function sendGoogleAuthToBackend(authCode: string){
         console.log(authCode);
-        console.log(props.token);
+        console.log(token);
 
         let config = {
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${props.token}`
+                "Authorization": `Bearer ${token}`
             }
         }
 

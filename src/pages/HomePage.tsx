@@ -1,11 +1,13 @@
 import GoogleAuthButton from "../components/GoogleAuthButton"
 import VideoUpload from "../components/VideoUpload"
+import { TokenProp } from "../models/TokenProp"
+import { TokenProps } from "../models/TokenProps"
 
-function HomePage(props: any){
+function HomePage({ token }: TokenProp){
     return(
         <>
-            <VideoUpload token={props.token} />
-            <GoogleAuthButton token={props.token} />
+            <VideoUpload token={token} />
+            <GoogleAuthButton token={token} />
         </>
     )
 }
