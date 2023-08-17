@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import ButtonLoading from "../components/ButtonLoading";
 import ErrorMessage from "../components/Auth/ErrorMessage";
-import { TokenProps } from "../models/TokenProps"
+import { AuthPageProps } from "../models/AuthPageProps";
+import { UserInfo } from "../models/UserInfo";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function LoginPage({ setToken }: TokenProps){
+function LoginPage({ setToken, setUserInfo }: AuthPageProps){
     const [data, setData] = useState({
         email: '',
         password: ''
@@ -47,6 +48,10 @@ function LoginPage({ setToken }: TokenProps){
 
     function handleRes(res: AxiosResponse){
         setToken(res.data.token);
+        setUserInfo({
+            username: res.data.username,
+            email: res.data.email
+        } as UserInfo);
         navigate("/home");
     }
 

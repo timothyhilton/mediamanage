@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import { TokenProp } from "../../models/TokenProp"
+import { UserInfo } from "../../models/UserInfo"
 
-function NavBar({ token }: TokenProp){
+function NavBar({ username }: UserInfo){
     return(
         <>
             <div className="px-8 mx-auto xl:px-5 max-w-7xl">
@@ -12,17 +12,19 @@ function NavBar({ token }: TokenProp){
                         </button>
                     </div>
 
-                    <nav className="flex items-center justify-end flex-1 hidden w-full h-full space-x-10 md:flex">
-                        <Link to="home" className="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-blue-600 focus:outline-none focus:text-blue-600">
+                    <nav className="flex items-center justify-end flex-1 w-full h-full space-x-10 md:flex">
+                        <Link to="home" className="text-base font-semibold leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-blue-600 focus:outline-none focus:text-blue-600">
                             Home
                         </Link>
                         <div className="w-1 h-5 mx-10 border-r border-gray-300"></div>
-                        <Link to="login" className="text-base font-medium leading-6 text-gray-500 whitespace-no-wrap hover:text-blue-600 focus:outline-none focus:text-gray-900">
-                            Sign in
+                        <Link to={`users/${username}`}  className='flex items-center space-x-5'>
+                            <div className=" text-gray-500 hover:text-gray-600 font-semibold">
+                                {username}
+                            </div>
+                            <button className="drop-shadow-md hover:drop-shadow-lg">
+                                <img src="/default-profile.jpg" className="h-10 rounded-full"/>
+                            </button>
                         </Link>
-                        <button className="drop-shadow-md">
-                            <img src="/default-profile.jpg" className="h-10 rounded-full"/>
-                        </button>
                     </nav>
                 </div>
             </div>

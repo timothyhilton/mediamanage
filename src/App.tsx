@@ -9,9 +9,11 @@ import LoginPage from './pages/LoginPage';
 import jwt_decode from 'jwt-decode';
 import { AuthToken } from './models/AuthToken';
 import GuestBar from './components/NavBar/GuestBar';
+import { UserInfo } from './models/UserInfo';
 
 function App() {
     const [token, setToken] = useState("");
+    const [userInfo, setUserInfo] = useState<UserInfo>({} as UserInfo);
 
     function isTokenValid(): boolean{
         if(token == "") { return false; }
@@ -32,14 +34,14 @@ function App() {
         <>
             <div className="bg-gray-50">
                 {isTokenValid() ? (
-                    <NavBar token={token}/>
+                    <NavBar username={userInfo?.username}/>
                     ) : (
                     <GuestBar />
                 )}
                 <Routes>
                     <Route path="/" element={<FrontPage />} />
-                    <Route path="/register" element={<RegisterPage setToken={setToken} />} />
-                    <Route path="/login" element={<LoginPage setToken={setToken}/>} />
+                    <Route path="/register" element={<RegisterPage setToken={setToken} setUserInfo={setUserInfo}/>} />
+                    <Route path="/login" element={<LoginPage setToken={setToken} setUserInfo={setUserInfo}/>} />
                     <Route path='/home'
                         element=
                         {isTokenValid() ? (

@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import ButtonLoading from "../components/ButtonLoading";
 import ErrorMessage from "../components/Auth/ErrorMessage";
-import { TokenProps } from "../models/TokenProps";
+import { UserInfo } from "../models/UserInfo";
+import { AuthPageProps } from "../models/AuthPageProps";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function RegisterPage({ setToken }: TokenProps){
+function RegisterPage({ setToken, setUserInfo }: AuthPageProps){
     const [data, setData] = useState({
         username:'',
         email:'',
@@ -39,6 +40,10 @@ function RegisterPage({ setToken }: TokenProps){
         axios.post(`${apiUrl}/auth/login`, data, { headers: {"Content-Type": "application/json"}})
                 .then(res => {
                     setToken(res.data.token);
+                    setUserInfo({
+                        username: res.data.username,
+                        email: res.data.email
+                    } as UserInfo);
                     navigate("/home");
                 })
                 .catch(err => handleError(err));
