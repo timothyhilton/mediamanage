@@ -10,6 +10,7 @@ import jwt_decode from 'jwt-decode';
 import { AuthToken } from './models/AuthToken';
 import GuestBar from './components/NavBar/GuestBar';
 import { UserInfo } from './models/UserInfo';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
     const [token, setToken] = useState("");
@@ -49,6 +50,14 @@ function App() {
                             ) : (
                             <Navigate to="/login" />
                         )}  
+                    />
+                    <Route 
+                        path={`/users/${userInfo.username}`} 
+                        element={<ProfilePage 
+                            username={userInfo.username} 
+                            email={userInfo.email}
+                            token={token}
+                        />} 
                     />
                 </Routes>
             </div>
