@@ -119,7 +119,7 @@ function FrontPage() {
                             />
                             <FAQ
                                 question = "Do you have a mobile app?"
-                                answer = "We currently do not have a mobile app, but it is in the works and should be ready soon"
+                                answer = "We currently do not have a mobile app, but it's in the works"
                             />
                         </div>
                     </div>

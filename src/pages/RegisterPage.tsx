@@ -146,7 +146,7 @@ function RegisterPage({ setToken, setUserInfo }: AuthPageProps){
 
                             <div className="flex flex-col items-center justify-center text-sm leading-5">
                                 <span className="block w-full mt-5 rounded-md shadow-sm">
-                                    <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                                    <button type="button" onClick={handleFormSubmit} className="font-semibold flex justify-center w-full px-4 py-2 text-sm text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
                                         {registerButtonContents}
                                     </button>
 
@@ -155,7 +155,7 @@ function RegisterPage({ setToken, setUserInfo }: AuthPageProps){
                                 <div className="flex items-center justify-between mt-6">
                                     <p className="mt-3 font-medium focus:underline">Already have an account?</p>
                                     <p className="text-white">_</p> {/* todo: make this better */}
-                                    <a href="/login" className="mt-3 font-medium text-blue-600 hover:text-blue-500 focus:underline">
+                                    <a href="/login" className="font-medium mt-3 text-blue-600 hover:text-blue-500 focus:underline">
                                         Login here
                                     </a>
                                 </div>

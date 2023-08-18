@@ -100,7 +100,7 @@ function LoginPage({ setToken, setUserInfo }: AuthPageProps){
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between mt-6">
+                            {/*<div className="flex items-center justify-between mt-6">
                                 <div className="flex items-center">
                                     <input id="remember" name="remember" type="checkbox" className="text-indigo-600 border-0 border-gray-300 rounded shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" />
                                     <label className="block ml-2 text-sm leading-5 text-gray-900">
@@ -113,11 +113,11 @@ function LoginPage({ setToken, setUserInfo }: AuthPageProps){
                                         Forgot your password?
                                     </a>
                                 </div>
-                            </div>
+                            </div>*/}
 
-                            <div className="flex flex-col items-center justify-center text-sm leading-5">
+                            <div className="mt-3 flex flex-col items-center justify-center text-sm leading-5">
                                 <span className="block w-full mt-5 rounded-md shadow-sm">
-                                    <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                                    <button type="button" onClick={handleFormSubmit} className="font-semibold flex justify-center w-full px-4 py-2 text-sm text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
                                         {LoginButtonContents}
                                     </button>
                                 </span>
