@@ -59,53 +59,62 @@ function VideoUpload({ token }: TokenProp){
     }
 
     return (
-        <div className="w-full max-w-xs">
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={() => handleFormSubmit}>
-                <h2 className="block text-gray-900 text-lg text-center font-semibold mb-3">
-                    Youtube Video Upload
-                </h2>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium leading-5 text-gray-700">
-                        Video title
-                    </label>
-                    <input className="mt-1 rounded-md shadow-sm w-full form-input" 
-                        id="title" 
-                        type="text" 
-                        placeholder="title"
-                        value={video.title}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium leading-5 text-gray-700">
-                        Video description
-                    </label>
-                    <input className="mt-1 rounded-md shadow-sm w-full form-input" 
-                        id="description" 
-                        type="text" 
-                        placeholder="description" 
-                        value={video.description}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <div className="mb-4">
-                    <input 
-                        type="file" 
-                        id="file" 
-                        className="hidden"
-                        onChange={handleFormChange}
-                    />
-                    <button className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-gray-600 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700" 
-                        onClick={() => document.getElementById('file')!.click()} 
-                        type="button"
-                    >
-                        Upload file
+        <div className="shadow-md rounded-md px-4 pt-4 pb-4 mb-4 bg-white hover:bg-slate-100">
+            <h2 className="font-medium text-gray-900 text-lg text-center font-semibold">
+                Global Video Upload
+            </h2>
+            <p>
+                Upload Video
+            </p>
+
+            {/*<div className="w-full max-w-xs">
+                <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={() => handleFormSubmit}>
+                    <h2 className="block text-gray-900 text-lg text-center font-semibold mb-3">
+                        Youtube Video Upload
+                    </h2>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium leading-5 text-gray-700">
+                            Video title
+                        </label>
+                        <input className="mt-1 rounded-md shadow-sm w-full form-input" 
+                            id="title" 
+                            type="text" 
+                            placeholder="title"
+                            value={video.title}
+                            onChange={handleFormChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium leading-5 text-gray-700">
+                            Video description
+                        </label>
+                        <input className="mt-1 rounded-md shadow-sm w-full form-input" 
+                            id="description" 
+                            type="text" 
+                            placeholder="description" 
+                            value={video.description}
+                            onChange={handleFormChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <input 
+                            type="file" 
+                            id="file" 
+                            className="hidden"
+                            onChange={handleFormChange}
+                        />
+                        <button className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-gray-600 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700" 
+                            onClick={() => document.getElementById('file')!.click()} 
+                            type="button"
+                        >
+                            Upload file
+                        </button>
+                    </div>
+                    <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                        {postVideoButtonContents}
                     </button>
-                </div>
-                <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
-                    {postVideoButtonContents}
-                </button>
-            </form>
+                </form>
+            </div>*/}
         </div>
     )
 }
