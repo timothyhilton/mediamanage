@@ -59,15 +59,7 @@ function VideoUpload({ token }: TokenProp){
     }
 
     return (
-        <div className="shadow-md rounded-md px-4 pt-4 pb-4 mb-4 bg-white hover:bg-slate-100">
-            <h2 className="font-medium text-gray-900 text-lg text-center font-semibold">
-                Global Video Upload
-            </h2>
-            <p>
-                Upload Video
-            </p>
-
-            {/*<div className="w-full max-w-xs">
+        <div className="w-full max-w-xs">
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={() => handleFormSubmit}>
                     <h2 className="block text-gray-900 text-lg text-center font-semibold mb-3">
                         Youtube Video Upload
@@ -114,8 +106,7 @@ function VideoUpload({ token }: TokenProp){
                         {postVideoButtonContents}
                     </button>
                 </form>
-            </div>*/}
-        </div>
+            </div>
     )
 }
 

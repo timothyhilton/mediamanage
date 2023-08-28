@@ -1,4 +1,5 @@
 import GoogleAuthButton from "../components/GoogleAuthButton"
+import ChangeInfoButton from "../components/ProfilePage/ChangeInfoButton"
 import { TokenProp } from "../models/TokenProp"
 import { UserInfo } from "../models/UserInfo"
 
@@ -34,6 +35,11 @@ function ProfilePage({username, email, token }: any){ //todo: make this not "any
                         {email}
                     </p>
                 </div>
+
+                <ChangeInfoButton 
+                    username={username}
+                    email={email}
+                />
 
                 <p className="text-xl font-semibold leading-5">
                     Service Linking
