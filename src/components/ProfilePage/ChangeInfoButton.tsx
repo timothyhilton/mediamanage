@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { UserInfo } from "../../models/UserInfo";
 import { AnimatePresence, motion } from "framer-motion";
+import { useForm } from "react-hook-form";
 
 function ChangeInfoButton({ username, email }: UserInfo){
     const [isOpen, setIsOpen] = useState(false);
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = (data: any) => console.log(data);
 
     function toggle() {
         setIsOpen(!isOpen);
     }
-    
+
+    console.log(watch("example"));
+
     return(
         <div>
             <button 
@@ -31,41 +36,26 @@ function ChangeInfoButton({ username, email }: UserInfo){
                         <div className="absolute flex flex-col justify-center pb-10 sm:pb-20 sm:px-6 lg:px-8">
                             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                                 <div className="px-4 py-8 bg-white border shadow border-gray-50 sm:rounded-lg sm:px-10">
-                                    <form role="form" method="POST" action="hi">
+                                    <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="">
                                             <label className="block text-sm font-medium leading-5 text-gray-700">
                                                 Username
                                             </label>
                                             <div className="mt-1 rounded-md shadow-sm">
-                                                <input id="username" type="username" name="username" value={username} required className="w-full form-input"/>
-                                            </div>
-                                        </div>
-
-                                        <div className="">
-                                            <label className="mt-6 block text-sm font-medium leading-5 text-gray-700">
-                                                Email Address
-                                            </label>
-                                            <div className="mt-1 rounded-md shadow-sm">
-                                                <input id="email" type="email" name="email" value={email} required className="w-full form-input"/>
+                                                <input defaultValue={username} {...register("username")} className="w-full form-input"/>
                                             </div>
                                         </div>
 
                                         <div className="mt-6">
                                             <label className="block text-sm font-medium leading-5 text-gray-700">
-                                                Password
+                                                Email
                                             </label>
                                             <div className="mt-1 rounded-md shadow-sm">
-                                                <input id="password" type="password" name="password" required className="w-full form-input"/>
+                                                <input defaultValue={email} {...register("email")} className="w-full form-input"/>
                                             </div>
                                         </div>
 
-                                        <div className="mt-3 flex flex-col items-center justify-center text-sm leading-5">
-                                            <span className="block w-full mt-5 rounded-md shadow-sm">
-                                                <button type="button" className="font-semibold flex justify-center w-full px-4 py-2 text-sm text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
-                                                    hi
-                                                </button>
-                                            </span>
-                                        </div>
+                                        <input type="submit" />
                                     </form>
                                 </div>
                             </div>
