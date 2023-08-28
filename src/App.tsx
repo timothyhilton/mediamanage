@@ -32,36 +32,34 @@ function App() {
     }
 
     return (
-        <>
-            <div className="bg-gray-50">
-                {isTokenValid() ? (
-                    <NavBar username={userInfo?.username}/>
-                    ) : (
-                    <GuestBar />
-                )}
-                <Routes>
-                    <Route path="/" element={<FrontPage />} />
-                    <Route path="/register" element={<RegisterPage setToken={setToken} setUserInfo={setUserInfo}/>} />
-                    <Route path="/login" element={<LoginPage setToken={setToken} setUserInfo={setUserInfo}/>} />
-                    <Route path='/home'
-                        element=
-                        {isTokenValid() ? (
-                            <HomePage token={token} />
-                            ) : (
-                            <Navigate to="/login" />
-                        )}  
-                    />
-                    <Route 
-                        path={`/users/${userInfo.username}`} 
-                        element={<ProfilePage 
-                            username={userInfo.username} 
-                            email={userInfo.email}
-                            token={token}
-                        />} 
-                    />
-                </Routes>
-            </div>
-        </>
+        <div className="bg-gray-50 h-full">
+            {isTokenValid() ? (
+                <NavBar username={userInfo?.username}/>
+                ) : (
+                <GuestBar />
+            )}
+            <Routes>
+                <Route path="/" element={<FrontPage />} />
+                <Route path="/register" element={<RegisterPage setToken={setToken} setUserInfo={setUserInfo}/>} />
+                <Route path="/login" element={<LoginPage setToken={setToken} setUserInfo={setUserInfo}/>} />
+                <Route path='/home'
+                    element=
+                    {isTokenValid() ? (
+                        <HomePage token={token} />
+                        ) : (
+                        <Navigate to="/login" />
+                    )}  
+                />
+                <Route 
+                    path={`/users/${userInfo.username}`} 
+                    element={<ProfilePage 
+                        username={userInfo.username} 
+                        email={userInfo.email}
+                        token={token}
+                    />} 
+                />
+            </Routes>
+        </div>
     )
 }
 
