@@ -4,8 +4,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import ButtonLoading from "../ButtonLoading";
 import Modal from 'react-modal';
+import axios from "axios";
 
-function ChangeInfoButton({ username, email }: UserInfo){
+const apiUrl = import.meta.env.VITE_API_URL;
+
+interface ChangeInfoButtonProps{
+    username?: string,
+    email?: string,
+    token: string
+}
+
+function ChangeInfoButton({ username, email, token }: ChangeInfoButtonProps){
     const [isModalOpen, setisModalOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [submitButtonContent, setSubmitButtonContents] = useState(<p>Submit Changes</p>);
@@ -17,6 +26,16 @@ function ChangeInfoButton({ username, email }: UserInfo){
     function onSubmit(info: UserInfo){
         console.log(info)
         setSubmitButtonContents(<ButtonLoading />);
+
+        let config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${token}`
+            }
+        }
+
+        axios.post(`${apiUrl}/auth/accountinfo`, info, config)
+            .then(res => setSubmitButtonContents(<p>Submit Changes</p>))
     }
 
     return(

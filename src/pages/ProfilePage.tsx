@@ -39,6 +39,7 @@ function ProfilePage({username, email, token }: any){ //todo: make this not "any
                 <ChangeInfoButton 
                     username={username}
                     email={email}
+                    token={token}
                 />
 
                 <p className="text-xl font-semibold leading-5">
