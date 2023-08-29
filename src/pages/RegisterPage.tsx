@@ -1,22 +1,24 @@
-import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import ButtonLoading from "../components/ButtonLoading";
 import ErrorMessage from "../components/Auth/ErrorMessage";
+import { UserInfo } from "../models/UserInfo";
+import { AuthPageProps } from "../models/AuthPageProps";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function RegisterPage(){
+function RegisterPage({ setToken, setUserInfo }: AuthPageProps){
     const [data, setData] = useState({
         username:'',
         email:'',
         password:'',
         password_confirmation:'',
     });
+
     const [registerButtonContents, setRegisterButtonContents] = useState(<p>Register</p>);
     const [errorMessageDiv, setErrorMessageDiv] = useState(<div />);
     const navigate = useNavigate();
-    const axiosErrorMessage = AxiosError;
 
     function handleFormChange(event: React.ChangeEvent<HTMLInputElement>) {
         setData(data => ({...data, [event.target.id]: event.target.value}));
@@ -30,15 +32,24 @@ function RegisterPage(){
                 .catch(err => handleError(err));
         }
         else{
-            handleError("pwdmatch");
+            handleError("passwords don't match");
         }
     }
 
     function handleRes(res: any){
-        console.log(res);
-        navigate("/home");
+        axios.post(`${apiUrl}/auth/login`, data, { headers: {"Content-Type": "application/json"}})
+                .then(res => {
+                    setToken(res.data.token);
+                    setUserInfo({
+                        username: res.data.username,
+                        email: res.data.email
+                    } as UserInfo);
+                    navigate("/home");
+                })
+                .catch(err => handleError(err));
     }
 
+    // todo: fix this abomination
     function handleError(err: any){
         console.log(err);
         try{
@@ -135,7 +146,7 @@ function RegisterPage(){
 
                             <div className="flex flex-col items-center justify-center text-sm leading-5">
                                 <span className="block w-full mt-5 rounded-md shadow-sm">
-                                    <button type="button" onClick={handleFormSubmit} className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
+                                    <button type="button" onClick={handleFormSubmit} className="font-semibold flex justify-center w-full px-4 py-2 text-sm text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700">
                                         {registerButtonContents}
                                     </button>
 
@@ -144,7 +155,7 @@ function RegisterPage(){
                                 <div className="flex items-center justify-between mt-6">
                                     <p className="mt-3 font-medium focus:underline">Already have an account?</p>
                                     <p className="text-white">_</p> {/* todo: make this better */}
-                                    <a href="/login" className="mt-3 font-medium text-blue-600 hover:text-blue-500 focus:underline">
+                                    <a href="/login" className="font-medium mt-3 text-blue-600 hover:text-blue-500 focus:underline">
                                         Login here
                                     </a>
                                 </div>

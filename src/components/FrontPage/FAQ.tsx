@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FAQProps } from "../../models/FAQProps";
 
-function FAQ(props: any){
+function FAQ({ question, answer }: FAQProps){
     const [expanded, setExpanded] = useState(false);
 
     return(
         <div className="relative overflow-hidden border-b border-gray-100 select-none">
             <h4 onClick={() => setExpanded(!expanded)} className="flex items-center justify-between px-2 text-lg font-medium text-gray-700 cursor-pointer sm:text-xl md:text-2xl py-7 hover:text-gray-900">
-                <span className="">{props.question}</span>
+                <span className="">{question}</span>
                 <svg className="w-6 h-6 mr-2 transition-all duration-200 ease-out transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path></svg>
             </h4>
             
@@ -19,7 +20,7 @@ function FAQ(props: any){
                         transition={{ duration: 0.3 }}
                         exit={{ opacity: 0, y: -16, transition:{duration: 0.2}}}
                     >
-                        <p className="px-2 pt-0 -mt-2 text-gray-400 transform sm:text-lg py-7">{props.answer}</p>
+                        <p className="px-2 pt-0 -mt-2 text-gray-400 transform sm:text-lg py-7">{answer}</p>
                     </motion.div>
                 }
             </AnimatePresence>
