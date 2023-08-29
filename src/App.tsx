@@ -11,6 +11,9 @@ import { AuthToken } from './models/AuthToken';
 import GuestBar from './components/NavBar/GuestBar';
 import { UserInfo } from './models/UserInfo';
 import ProfilePage from './pages/ProfilePage';
+import VideoPage from './pages/VideoPage';
+
+
 
 function App() {
     const [token, setToken] = useState("");
@@ -31,6 +34,15 @@ function App() {
         }
     }
 
+    function Protected(page: JSX.Element): JSX.Element{
+        if(isTokenValid()){
+            return(page)
+        }
+        else{
+            return(<Navigate to="/login" />)
+        }
+    }
+
     return (
         <div className="bg-gray-50 h-full">
             {isTokenValid() ? (
@@ -42,21 +54,15 @@ function App() {
                 <Route path="/" element={<FrontPage />} />
                 <Route path="/register" element={<RegisterPage setToken={setToken} setUserInfo={setUserInfo}/>} />
                 <Route path="/login" element={<LoginPage setToken={setToken} setUserInfo={setUserInfo}/>} />
-                <Route path='/home'
-                    element=
-                    {isTokenValid() ? (
-                        <HomePage token={token} />
-                        ) : (
-                        <Navigate to="/login" />
-                    )}  
-                />
+                <Route path='/home' element={Protected(<HomePage token={token} username={userInfo?.username} />)} />
+                <Route path='/video' element={Protected(<VideoPage token={token} />)} />
                 <Route 
                     path={`/users/${userInfo.username}`} 
-                    element={<ProfilePage 
+                    element={Protected(<ProfilePage 
                         username={userInfo.username} 
                         email={userInfo.email}
                         token={token}
-                    />} 
+                    />)} 
                 />
             </Routes>
         </div>

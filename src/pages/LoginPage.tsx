@@ -33,7 +33,7 @@ function LoginPage({ setToken, setUserInfo }: AuthPageProps){
         try{
             setErrorMessageDiv(
                 <ErrorMessage errors={
-                    [err.response!.data]
+                    [JSON.stringify(err.response!.data)]
                 }/>
             )
         }
