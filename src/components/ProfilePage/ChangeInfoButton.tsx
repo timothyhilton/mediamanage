@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import ButtonLoading from "../ButtonLoading";
 import Modal from 'react-modal';
 import axios from "axios";
+import ErrorMessage from "../Auth/ErrorMessage";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -18,6 +19,7 @@ function ChangeInfoButton({ username, email, token }: ChangeInfoButtonProps){
     const [isModalOpen, setisModalOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [submitButtonContent, setSubmitButtonContents] = useState(<p>Submit Changes</p>);
+    const [errDiv, setErrDiv] = useState(<div />)
 
     function toggleModal() {
         setisModalOpen(!isModalOpen);
@@ -36,6 +38,7 @@ function ChangeInfoButton({ username, email, token }: ChangeInfoButtonProps){
 
         axios.post(`${apiUrl}/auth/accountinfo`, info, config)
             .then(res => setSubmitButtonContents(<p>Submit Changes</p>))
+            .catch(res => setErrDiv(<ErrorMessage errors={[res.response.title]}/>))
     }
 
     return(
@@ -55,11 +58,13 @@ function ChangeInfoButton({ username, email, token }: ChangeInfoButtonProps){
             >
                 <div className="px-4 py-8 bg-white border shadow border-gray-50 sm:rounded-lg sm:px-10">
 
-                    <h1 className="text-2xl font-bold mb-6">
+                    <h1 className="text-2xl font-bold">
                         Change account settings below
                     </h1>
 
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    {errDiv}
+
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
                         <div className="">
                             <label className="block text-sm font-medium leading-5 text-gray-700">
                                 Username
