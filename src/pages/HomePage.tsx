@@ -19,9 +19,9 @@ function HomePage({ token, username }: HomePageProps){
 
             <div className="mt-8 md:mt-[5rem]">
                 <Button 
-                    text="Post video"
+                    text="Video Dashboard"
                     link="/video"
-                    className="md:w-[9rem] w-[80vw]"
+                    className="md:w-[11.3rem] w-[80vw]"
                 />
             </div>
         </div>
