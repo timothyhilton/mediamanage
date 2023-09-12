@@ -1,13 +1,18 @@
 import VideoUpload from "../components/VideoUpload";
+import Table from "../components/VideoPage/Table"
 
 interface VideoPageProps{
     token: string
 }
 
 export default function VideoPage({ token }: VideoPageProps){
+
     return(
-        <div className="ml-10 mt-10 absolute">
-            <VideoUpload token={token} />
+        <div>
+            <Table
+                token = {token}
+            />
+            <VideoUpload token = {token} />
         </div>
     )
 }
