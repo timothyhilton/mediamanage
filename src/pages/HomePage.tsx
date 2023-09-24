@@ -1,9 +1,4 @@
-import { redirect } from "react-router-dom"
-import GoogleAuthButton from "../components/GoogleAuthButton"
 import Button from "../components/HomePage/Button"
-import VideoUpload from "../components/VideoUpload"
-import { TokenProp } from "../models/TokenProp"
-import { UserInfo } from "../models/UserInfo"
 
 interface HomePageProps{
     token?: string,
