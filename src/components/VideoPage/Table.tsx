@@ -48,10 +48,10 @@ export default function Table( {token}: {token: string} ){
     }, [])
 
     return(
-        <div className="flex flex-col bg-gray-200 rounded-xl border border-gray-300 m-auto max-h-[25rem] mt-3 md:mt-5 lg:mr-[8rem] lg:ml-[8rem] text-xs md:text-base">
+        <div className="flex flex-col bg-white rounded-xl shadow-md m-auto max-h-[25rem] mt-3 md:mt-5 lg:mr-[8rem] lg:ml-[8rem] text-xs md:text-base">
             <div className="overflow-x-auto md:p-4">
                 <div className="p-1.5 min-w-full inline-block align-middle">
-                    <table className="min-w-full divide-y divide-gray-300 ">
+                    <table className="min-w-full divide-y divide-gray-200 ">
                         <thead>
                             <tr>
                                 <th className="px-6 py-3 text-left">Name</th>
@@ -60,7 +60,7 @@ export default function Table( {token}: {token: string} ){
                                 <th className="px-6 py-3 text-left">Link</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-300">
+                        <tbody className="divide-y divide-gray-200">
                             {
                                 videos.map((video: VideoRes) => {
                                     return(
