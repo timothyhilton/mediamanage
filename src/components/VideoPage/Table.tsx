@@ -48,7 +48,7 @@ export default function Table( {token}: {token: string} ){
     }, [])
 
     return(
-        <div className="flex flex-col bg-white border shadow border-gray-50 rounded-xl m-auto max-h-[25rem] mt-3 md:mt-5 lg:mr-[8rem] lg:ml-[8rem] text-xs md:text-base">
+        <div className="flex flex-col bg-white border shadow border-gray-50 rounded-xl m-auto max-h-[25rem] text-xs md:text-base md:mx-[10%] mt-5">
             <div className="overflow-x-auto md:p-4">
                 <div className="p-1.5 min-w-full inline-block align-middle">
                     <table className="min-w-full divide-y divide-gray-200 ">
