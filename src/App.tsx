@@ -19,6 +19,7 @@ function App() {
     const [token, setToken] = useState("");
     const [userInfo, setUserInfo] = useState<UserInfo>({} as UserInfo);
 
+    // returns false if the jwt is null or has expired
     function isTokenValid(): boolean{
         if(token == "") { return false; }
         
@@ -34,6 +35,7 @@ function App() {
         }
     }
 
+    // returns the jsx element, only if jwt is valid
     function Protected(page: JSX.Element): JSX.Element{
         if(isTokenValid()){
             return(page)

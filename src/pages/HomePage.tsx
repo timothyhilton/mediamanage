@@ -1,4 +1,4 @@
-import Button from "../components/HomePage/Button"
+import Button from "../components/Button"
 
 interface HomePageProps{
     token?: string,
@@ -8,7 +8,7 @@ interface HomePageProps{
 function HomePage({ token, username }: HomePageProps){
     return(
         <div className="grid place-items-center">
-            <h1 className="font-bold mt-8 text-3xl md:text-5xl md:mt-[7rem] text-center">
+            <h1 className="font-bold mt-8 text-3xl md:text-5xl md:mt-[5.5rem] text-center">
                 Welcome back, {username}
             </h1>
 
@@ -17,6 +17,7 @@ function HomePage({ token, username }: HomePageProps){
                     text="Video Dashboard"
                     link="/video"
                     className="md:w-[11.3rem] w-[80vw]"
+                    arrow={true}
                 />
             </div>
         </div>
