@@ -54,7 +54,7 @@ function ChangeInfoButton({ username, email, token }: ChangeInfoButtonProps){
                 isOpen={isModalOpen}
                 onRequestClose={toggleModal}
                 contentLabel="Example Modal"
-                className={"bg-white sm:w-full flex flex-col sm:mx-auto sm:max-w-md md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"}
+                className={"bg-white sm:w-full flex flex-col mt-[5rem] md:mt-0 sm:mx-auto sm:max-w-md md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"}
             >
                 <div className="px-4 py-8 bg-white border shadow border-gray-50 sm:rounded-lg sm:px-10">
 
