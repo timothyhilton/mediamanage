@@ -1,4 +1,4 @@
-import GoogleAuthButton from "../components/GoogleAuthButton"
+import GoogleAuthButton from "../components/ProfilePage/GoogleAuthButton"
 import ChangeInfoButton from "../components/ProfilePage/ChangeInfoButton"
 import { TokenProp } from "../models/TokenProp"
 import { UserInfo } from "../models/UserInfo"
