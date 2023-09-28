@@ -1,4 +1,5 @@
 import Button from "../components/Button"
+import Analytics from "../components/HomePage/Analytics"
 
 interface HomePageProps{
     token?: string,
@@ -20,6 +21,8 @@ function HomePage({ token, username }: HomePageProps){
                     arrow={true}
                 />
             </div>
+
+            <Analytics />
         </div>
     )   
 }

@@ -9,7 +9,7 @@ interface SlideDrawerProps{
 
 export default function SlideDrawer({ slideDrawerToggled, setSlideDrawerToggled } : SlideDrawerProps){
     function onOptionClick(){
-        //setSlideDrawerToggled(!slideDrawerToggled)
+        setSlideDrawerToggled(!slideDrawerToggled)
     }
 
     return(

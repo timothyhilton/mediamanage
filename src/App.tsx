@@ -48,7 +48,7 @@ function App() {
     return (
         <div className="bg-gray-50 h-full">
             {isTokenValid() ? (
-                <NavBar username={userInfo?.username}/>
+                <NavBar username={userInfo?.username} token={token}/>
                 ) : (
                 <GuestBar />
             )}
