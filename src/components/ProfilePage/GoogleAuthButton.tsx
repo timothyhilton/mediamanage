@@ -1,7 +1,7 @@
 import axios from "axios";
-import GoogleAuth from "../services/GoogleAuth";
-import { TokenProps } from "../models/TokenProps";
-import { TokenProp } from "../models/TokenProp";
+import GoogleAuth from "../../services/GoogleAuth";
+import { TokenProps } from "../../models/TokenProps";
+import { TokenProp } from "../../models/TokenProp";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 

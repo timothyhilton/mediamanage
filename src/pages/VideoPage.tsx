@@ -1,4 +1,3 @@
-import VideoUpload from "../components/VideoUpload";
 import Table from "../components/VideoPage/Table"
 
 interface VideoPageProps{
@@ -12,7 +11,6 @@ export default function VideoPage({ token }: VideoPageProps){
             <Table
                 token = {token}
             />
-            <VideoUpload token = {token} />
         </div>
     )
 }
