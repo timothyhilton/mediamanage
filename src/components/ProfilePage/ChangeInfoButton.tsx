@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { UserInfo } from "../../models/UserInfo";
-import { AnimatePresence, motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import ButtonLoading from "../ButtonLoading";
 import Modal from 'react-modal';
@@ -53,7 +52,7 @@ function ChangeInfoButton({ username, email, token }: ChangeInfoButtonProps){
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={toggleModal}
-                contentLabel="Example Modal"
+                contentLabel="Account information changer"
                 className={"bg-white sm:w-full flex flex-col mt-[5rem] md:mt-0 sm:mx-auto sm:max-w-md md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"}
             >
                 <div className="px-4 py-8 bg-white border shadow border-gray-50 sm:rounded-lg sm:px-10">

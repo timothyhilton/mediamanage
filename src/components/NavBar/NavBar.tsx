@@ -3,9 +3,7 @@ import { UserInfo } from "../../models/UserInfo"
 import HamburgerIcon from "./SlideDrawer/HamburgerIcon"
 import { useState } from "react";
 import SlideDrawer from "./SlideDrawer/SlideDrawer";
-import { AnimatePresence } from "framer-motion";
 import UploadButton from "./UploadMenu/UploadButton";
-import UploadModal from "./UploadMenu/UploadModal";
 
 // navbar is only used when the user is logged in, otherwise it is substituted for GuestBar.tsx
 
@@ -32,7 +30,7 @@ function NavBar({ username, token }: NavBar){
                     </div>
                     <SlideDrawer slideDrawerToggled={slideDrawerToggled} setSlideDrawerToggled={setSlideDrawerToggled}/>
 
-                    <UploadModal token={token}/>
+                    <UploadButton token={token}/>
                     <div className="w-1 h-5 mx-10 border-r border-gray-300"></div>
                     <Link to={`users/${username}`}  className='flex items-center space-x-5'>
                         <div className=" text-gray-500 hover:text-gray-600 font-semibold text-md">
