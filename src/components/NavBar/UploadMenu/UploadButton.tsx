@@ -19,9 +19,9 @@ export default function UploadButton({ token }: { token: string}){
                 isOpen={isModalOpen}
                 onRequestClose={toggleModal}
                 contentLabel="Uploading a video"
-                className={"bg-white sm:w-full flex flex-col mt-[5rem] md:mt-0 sm:mx-auto sm:max-w-md md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"}
+                className={"sm:w-full flex flex-col mt-[5rem] md:mt-0 sm:mx-auto sm:max-w-md md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"}
             >
-                <UploadModal />
+                <UploadModal token={token}/>
             </Modal>
         </div>
     )

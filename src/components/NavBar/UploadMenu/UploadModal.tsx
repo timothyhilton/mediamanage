@@ -14,8 +14,8 @@ export default function UploadModal({ token }: TokenProp){
     const[postVideoButtonContents, setPostVideoButtonContents] = useState(<p>Post Video</p>);
 
     function postVideo(video: any){
-        video.file = video.file[0]
-        console.log(video)
+        video.file = video.file[0];
+
         setPostVideoButtonContents(<ButtonLoading />);
 
         let config = {
@@ -57,7 +57,7 @@ export default function UploadModal({ token }: TokenProp){
                     Video File
                 </label>
                 <div className="mt-1 rounded-md shadow-sm">
-                    <input {...register("file")} className="w-full form-input" type="file"/>
+                    <input {...register("file")} className="w-full form-input file:hidden hover:bg-gray-200 bg-gray-100" type="file"/>
                 </div>
             </div>
 
